@@ -1,9 +1,9 @@
 import utilStyles from '../styles/utils.module.css';
-import { forwardRef, useEffect } from 'react';
+import { forwardRef } from 'react';
 
 export const Textbox = forwardRef(function Textbox({ letter, space, index, handleFocus }, ref) {
   const handleInputChange = (e) => {
-    if (e.target.value === letter) {
+    if (e.target.value.toUpperCase() === letter) {
       console.log('yay');
     } else {
       console.log('no');
@@ -23,6 +23,7 @@ export const Textbox = forwardRef(function Textbox({ letter, space, index, handl
       maxLength={1}
       onChange={handleInputChange}
       ref={ref}
+      style={{textTransform: 'uppercase'}}
     />
   );
 });
