@@ -11,7 +11,7 @@ export function URL({isURL}) {
   return (
     <div>
       <p>Here is the link to send your friend:</p>
-      <button class="btn" onClick={copyContent}>${isURL}</button>
+      <button className="btn" onClick={copyContent}>${isURL}</button>
     </div>
   )
 }
