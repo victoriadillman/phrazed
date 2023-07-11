@@ -7,7 +7,7 @@ export function GuessContainer({ phrase }) {
   const refs = useRef([]);
 
   const handleFocus = (nextIndex) => {
-    if (nextIndex < refs.current.length && refs.current.length !== null) {
+    if (nextIndex < refs.current.length && refs.current[nextIndex] !== null) {
       refs.current[nextIndex].focus();
     }
   };
