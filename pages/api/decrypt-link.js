@@ -1,4 +1,4 @@
-const CryptoJS = require('crypto-js')
+import CryptoJS from "crypto-js";
 
 export default function handler(req, res) {
   const URL = req.body.URL;
@@ -7,9 +7,10 @@ export default function handler(req, res) {
       const result = CryptoJS.enc.Base64.parse(data).toString(CryptoJS.enc.Utf8);
       return result;
     } catch (ex) {
-      return 'The sound of one hand clapping'
+      console.error('Error occurred during decryption:', ex, URL);
+      return 'The sound of one hand clapping';
     }
-  }
+  };
   const result = decrypt(URL);
   res.status(200).json({phrase: result})
 }

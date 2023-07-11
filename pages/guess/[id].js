@@ -10,6 +10,12 @@ export default function Game() {
 
   useEffect(() => {
     setLoading(true)
+
+    if (!router.query.id) {
+      setLoading(false);
+      return;
+    }
+
     const data = {URL: router.query.id};
     const JSONdata = JSON.stringify(data);
     const endpoint = '/api/decrypt-link';

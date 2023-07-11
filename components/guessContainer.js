@@ -5,10 +5,19 @@ import { useRef } from 'react';
 
 export function GuessContainer({ phrase }) {
   const refs = useRef([]);
+  const regex = new RegExp(/^[^a-zA-Z]*$/);
+
+  phrase = phrase.toUpperCase();
 
   const handleFocus = (nextIndex) => {
-    if (nextIndex < refs.current.length && refs.current[nextIndex] !== null) {
+    if (nextIndex < refs.current.length && refs.current[nextIndex]) {
       refs.current[nextIndex].focus();
+    }
+    else if (nextIndex > refs.current.length) {
+      return;
+    }
+    else {
+      handleFocus(nextIndex + 1)
     }
   };
 
@@ -17,18 +26,17 @@ export function GuessContainer({ phrase }) {
   let space = false;
   for (let i = 0; i < phrase.length; i++) {
     // Logic for spacing
-    if (phrase[i + 1] === ' ') {
+    if (regex.test(phrase[i + 1])) {
       space = true;
     }
-    if (phrase[i - 1] === ' ') {
-      space = false;
-    }
 
-    if (rows.length > 5 && phrase[i] === ' ') {
+    // Logic for words
+    if (rows.length > 5 && regex.test(phrase[i])) {
+      rows.push(<Empty key={'empty' + i} letter={phrase[i]}/>);
       arrBox.push(rows);
       rows = [];
-    } else if (phrase[i] === ' ') {
-      rows.push(<Empty key={'empty' + i} />);
+    } else if (regex.test(phrase[i])) {
+      rows.push(<Empty key={'empty' + i} letter={phrase[i]}/>);
       
     } else {
       rows.push(
@@ -42,6 +50,7 @@ export function GuessContainer({ phrase }) {
         />
       );
     }
+    space = false;
   }
 
   return (
