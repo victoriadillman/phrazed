@@ -9,9 +9,13 @@ export function GuessContainer({ phrase }) {
 
   phrase = phrase.toUpperCase();
 
-  const handleFocus = (nextIndex) => {
+  const handleFocus = (nextIndex, backspace) => {
     if (nextIndex < refs.current.length && refs.current[nextIndex]) {
-      refs.current[nextIndex].focus();
+      const nextInput = refs.current[nextIndex];
+      nextInput.focus();
+      if (backspace) {
+        nextInput.value = '';
+      }
     }
     else if (nextIndex > refs.current.length) {
       return;
