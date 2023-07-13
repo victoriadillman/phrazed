@@ -17,7 +17,7 @@ export function GuessContainer({ phrase }) {
         nextInput.value = '';
       }
     }
-    else if (nextIndex > refs.current.length) {
+    else if (nextIndex > refs.current.length || nextIndex < 0) {
       return;
     }
     else {

@@ -4,7 +4,8 @@ export default function handler(req, res) {
   const URL = req.body.URL;
   const decrypt = function(data) {
     try {
-      const result = CryptoJS.enc.Base64.parse(data).toString(CryptoJS.enc.Utf8);
+      const decodedData = decodeURIComponent(data)
+      const result = CryptoJS.enc.Base64.parse(decodedData).toString(CryptoJS.enc.Utf8);
       return result;
     } catch (ex) {
       console.error('Error occurred during decryption:', ex, URL);
