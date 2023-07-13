@@ -21,17 +21,26 @@ export function GuessContainer({ phrase }) {
       return;
     }
     else {
-      handleFocus(nextIndex + 1)
+      if (backspace) {
+        handleFocus(nextIndex - 1, true)
+      }
+      else {
+        handleFocus(nextIndex + 1, false)
+      }
     }
   };
 
   const arrBox = [];
   let rows = [];
   let space = false;
+  let backspace = false;
   for (let i = 0; i < phrase.length; i++) {
     // Logic for spacing
     if (regex.test(phrase[i + 1])) {
       space = true;
+    }
+    if (regex.test(phrase[i - 1])) {
+      backspace = true;
     }
 
     // Logic for words
@@ -47,6 +56,7 @@ export function GuessContainer({ phrase }) {
         <Textbox
           letter={phrase[i]}
           space={space}
+          backspace={backspace}
           key={i}
           index={i}
           handleFocus={handleFocus}
@@ -55,6 +65,7 @@ export function GuessContainer({ phrase }) {
       );
     }
     space = false;
+    backspace = false;
   }
 
   return (
