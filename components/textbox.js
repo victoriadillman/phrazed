@@ -1,7 +1,7 @@
 import utilStyles from '../styles/utils.module.css';
 import { forwardRef, useRef } from 'react';
 
-export const Textbox = forwardRef(function Textbox({ letter, space, index, handleFocus }, ref) {
+export const Textbox = forwardRef(function Textbox({ letter, space, backspace, index, handleFocus }, ref) {
   const handleInputChange = (e) => {
 
     if (e.target.value.toUpperCase() === letter) {
@@ -26,7 +26,10 @@ export const Textbox = forwardRef(function Textbox({ letter, space, index, handl
       const value = event.target.value; 
 
       if (value === '') {
-        handleFocus(index - 1, true);
+        if (backspace) {
+          handleFocus(index - 2, true)
+        }
+          handleFocus(index - 1, true);
       } else {
         event.target.value = '';
       }
