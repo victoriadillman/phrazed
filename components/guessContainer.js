@@ -1,12 +1,13 @@
 import { Textbox } from './textbox';
 import { Empty } from './empty'
 import utilStyles from '../styles/utils.module.css';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export function GuessContainer({ phrase }) {
   const refs = useRef([]);
   const regex = new RegExp(/^[^a-zA-Z]*$/);
 
+  // Ensures everything is uppercase for edge cases
   phrase = phrase.toUpperCase();
 
   const handleFocus = (nextIndex, backspace) => {
@@ -30,11 +31,23 @@ export function GuessContainer({ phrase }) {
     }
   };
 
+  // Creating check letter logic with another for loop
+  const letterArr = [];
+  const colorArr = [];
+  for (let i = 0; i < phrase.length; i++) {
+    letterArr.push(phrase[i]);
+    colorArr.push('white')
+  }
+  const [arrLetters, setArrLetters] = useState(letterArr);
+  const [arrColors, setArrColors] = useState(colorArr);
+  // Done with letter logic here
+  
   const arrBox = [];
   let rows = [];
   let space = false;
   let backspace = false;
   for (let i = 0; i < phrase.length; i++) {
+
     // Logic for spacing
     if (regex.test(phrase[i + 1])) {
       space = true;
@@ -54,12 +67,16 @@ export function GuessContainer({ phrase }) {
     } else {
       rows.push(
         <Textbox
-          letter={phrase[i]}
+          phrase={phrase}
           space={space}
           backspace={backspace}
           key={i}
           index={i}
           handleFocus={handleFocus}
+          arrLetters={arrLetters}
+          setArrLetters={setArrLetters}
+          setArrColors={setArrColors}
+          testStyle={utilStyles[arrColors[i]]}
           ref={(el) => (refs.current[i] = el)}
         />
       );

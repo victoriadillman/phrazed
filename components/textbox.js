@@ -1,14 +1,18 @@
 import utilStyles from '../styles/utils.module.css';
 import { forwardRef, useRef } from 'react';
+import { check } from '../functions/checking';
 
-export const Textbox = forwardRef(function Textbox({ letter, space, backspace, index, handleFocus }, ref) {
+export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle }, ref) {
   const handleInputChange = (e) => {
+    // Handling array for checking if argument is correct
+    const newArr = [];
+    arrLetters.forEach((element, i) => {
+      if (i === index) newArr.push(e.target.value.toUpperCase());
+      else newArr.push(element);
+    });
+    setArrLetters(newArr);
 
-    if (e.target.value.toUpperCase() === letter) {
-      console.log('yay');
-    } else {
-      console.log('no');
-    }
+    // Handling cursor movement
     if (space) {
       handleFocus(index + 2, false);
     }
@@ -34,11 +38,14 @@ export const Textbox = forwardRef(function Textbox({ letter, space, backspace, i
         event.target.value = '';
       }
     }
+    if (event.key === 'Enter') {
+      setArrColors(check(phrase, arrLetters))
+    }
   };
 
   return (
     <input
-      className={utilStyles.box}
+      className={testStyle}
       defaultValue=""
       maxLength={1}
       onChange={handleInputChange}
