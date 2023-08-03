@@ -1,7 +1,7 @@
 import Layout from '../../components/layouts';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { GuessContainer } from '../../components/guessContainer';
+import { IndividualGuess } from '../../components/individualGuess';
 
 export default function Game() {
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function Game() {
     fetch(endpoint, options)
       .then((res) => res.json())
       .then((data) => {
-        setPhrase(data.phrase);
+        setPhrase(data.phrase.toUpperCase());
         setLoading(false)
       })
   }, [router.query.id]);
@@ -40,7 +40,11 @@ export default function Game() {
   return (
   <Layout>
     <p>The phrase is: {phrase}</p>
-    <GuessContainer phrase={phrase}/>
+    <IndividualGuess phrase={phrase}/>
+    <IndividualGuess phrase={phrase}/>
+    <IndividualGuess phrase={phrase}/>
+    <IndividualGuess phrase={phrase}/>
+    <IndividualGuess phrase={phrase}/>
   </Layout>
   );
 }
