@@ -1,15 +1,29 @@
 import { Textbox } from './textbox';
 import { Empty } from './empty'
 import utilStyles from '../styles/utils.module.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function GuessContainer({ phrase }) {
   const refs = useRef([]);
+  const gridRef = useRef(null);
   const regex = new RegExp(/^[^a-zA-Z]*$/);
+ 
+  // Logic for hyphen
+  useEffect(() => {
+    const handleHyphen = () => {
+      if (gridRef.current && gridRef.current.scrollHeight > (refs.current[0].scrollHeight + 1)) {
+        console.log('needs hyphen');
+      } else {
+        console.log('no hyphen');
+      }
+    };
+    handleHyphen();
+  }, [gridRef]);
 
   // Ensures everything is uppercase for edge cases
   phrase = phrase.toUpperCase();
 
+  // Function for when user types in a letter
   const handleFocus = (nextIndex, backspace) => {
     if (nextIndex < refs.current.length && refs.current[nextIndex]) {
       const nextInput = refs.current[nextIndex];
@@ -31,7 +45,7 @@ export function GuessContainer({ phrase }) {
     }
   };
 
-  // Creating check letter logic with another for loop
+  // Creating check letter logic (with colors)
   const letterArr = [];
   const colorArr = [];
   for (let i = 0; i < phrase.length; i++) {
@@ -40,9 +54,8 @@ export function GuessContainer({ phrase }) {
   }
   const [arrLetters, setArrLetters] = useState(letterArr);
   const [arrColors, setArrColors] = useState(colorArr);
-  // Done with letter logic here
   
-  const arrBox = [];
+  // Logic for the original delivery of rows
   let rows = [];
   let space = false;
   let backspace = false;
@@ -57,13 +70,8 @@ export function GuessContainer({ phrase }) {
     }
 
     // Logic for words
-    if (rows.length > 5 && regex.test(phrase[i])) {
-      rows.push(<Empty key={'empty' + i} letter={phrase[i]}/>);
-      arrBox.push(rows);
-      rows = [];
-    } else if (regex.test(phrase[i])) {
-      rows.push(<Empty key={'empty' + i} letter={phrase[i]}/>);
-      
+    if (regex.test(phrase[i])) {
+      rows.push(<Empty key={'empty' + i} letter={phrase[i]}/>); 
     } else {
       rows.push(
         <Textbox
@@ -85,14 +93,14 @@ export function GuessContainer({ phrase }) {
     backspace = false;
   }
 
+  // Actual JSX
   return (
     <div>
-      {arrBox.map((row, index) => (
-        <div className={utilStyles.grid} key={index}>
-          {row}
-        </div>
-      ))}
-      <div className={utilStyles.grid}>{rows}</div>
+      <div className={utilStyles.grid} ref={gridRef}>{rows}</div>
+      <div className={utilStyles.grid} ref={gridRef}>{rows}</div>
+      <div className={utilStyles.grid} ref={gridRef}>{rows}</div>
+      <div className={utilStyles.grid} ref={gridRef}>{rows}</div>
+      <div className={utilStyles.grid} ref={gridRef}>{rows}</div>
     </div>
   );
 }

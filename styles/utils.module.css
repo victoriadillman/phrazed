@@ -56,13 +56,12 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
   margin-top: 3rem;
 }
 
 .box {
-  width: 50px;
-  height: 50px;
+  max-width: 50px;
+  max-height: 50px;
   border: solid black 1px;
   text-align: center;
   display: block;
@@ -77,8 +76,8 @@
 }
 
 .white {
-  width: 50px;
-  height: 50px;
+  width: 2.5em;
+  height: 2.5em;
   border: solid black 1px;
   text-align: center;
   display: block;
@@ -86,8 +85,8 @@
 }
 
 .red {
-  width: 50px;
-  height: 50px;
+  width: 2.5em;
+  height: 2.5em;
   border: solid black 1px;
   text-align: center;
   display: block;
@@ -95,8 +94,8 @@
 }
 
 .green {
-  width: 50px;
-  height: 50px;
+  width: 2.5em;
+  height: 2.5em;
   border: solid black 1px;
   text-align: center;
   display: block;
@@ -104,8 +103,8 @@
 }
 
 .yellow {
-  width: 50px;
-  height: 50px;
+  width: 2.5em;
+  height: 2.5em;
   border: solid black 1px;
   text-align: center;
   display: block;
@@ -113,8 +112,8 @@
 }
 
 .purple {
-  width: 50px;
-  height: 50px;
+  width: 2.5em;
+  height: 2.5em;
   border: solid black 1px;
   text-align: center;
   display: block;
