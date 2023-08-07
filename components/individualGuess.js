@@ -46,7 +46,12 @@ export function IndividualGuess({phrase}){
   const letterArr = [];
   const colorArr = [];
   for (let i = 0; i < phrase.length; i++) {
-    letterArr.push('-');
+    if (phrase[i] === ' ') {
+      letterArr.push(' ')
+    }
+    else {
+      letterArr.push('-');
+    }
     colorArr.push('white')
   }
   const [arrLetters, setArrLetters] = useState(letterArr);

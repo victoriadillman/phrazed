@@ -39,8 +39,15 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       }
     }
     if (event.key === 'Enter') {
-      console.log(arrLetters)
-      setArrColors(check(phrase, arrLetters))
+      // Need to check if the whole phrase has been updated
+      const noAlphabet = new RegExp(/[^a-zA-Z]/)
+      // the pattern for no alphabet isn't working... work on this
+      if (arrLetters.includes('-') || arrLetters.includes(noAlphabet)) {
+        console.log('invalid')
+      }
+      else {
+        setArrColors(check(phrase, arrLetters))
+      }
     }
   };
 
@@ -53,6 +60,8 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       onKeyDown={handleOnKeyDown}
       ref={ref}
       style={{textTransform: 'uppercase'}}
+      pattern="^[a-zA-Z]+$"
+      title="Password should be digits (0 to 9) or alphabets (a to z)."
     />
   );
 });
