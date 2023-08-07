@@ -39,6 +39,7 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       }
     }
     if (event.key === 'Enter') {
+      console.log(arrLetters)
       setArrColors(check(phrase, arrLetters))
     }
   };
