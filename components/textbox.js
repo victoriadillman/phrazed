@@ -17,7 +17,7 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       handleFocus(index + 2, false);
     }
     else {
-      handleFocus(index + 1, false); 
+      handleFocus(index + 1, false);
     }
   };
 
