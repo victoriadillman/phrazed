@@ -8,6 +8,9 @@ export function IndividualGuess({phrase}){
   const gridRef = useRef(null);
   const regex = new RegExp(/^[^a-zA-Z]*$/);
 
+  // Logic for blocking input on enter
+  const [enabled, setEnable] = useState(true);
+
     // Logic for hyphen
     useEffect(() => {
       const handleHyphen = () => {
@@ -88,6 +91,8 @@ export function IndividualGuess({phrase}){
           setArrColors={setArrColors}
           testStyle={utilStyles[arrColors[i]]}
           ref={(el) => (refs.current[i] = el)}
+          enabled={enabled}
+          setEnable={setEnable}
         />
       );
     }

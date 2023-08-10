@@ -2,8 +2,7 @@ import utilStyles from '../styles/utils.module.css';
 import { forwardRef, useRef, useState } from 'react';
 import { check } from '../functions/checking';
 
-export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle }, ref) {
-  const [enabled, setEnable] = useState(true);
+export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable }, ref) {
 
   const handleInputChange = (e) => {
     // Handling array for checking if argument is correct
