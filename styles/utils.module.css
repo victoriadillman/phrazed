@@ -78,10 +78,11 @@
 .white {
   width: 2.5em;
   height: 2.5em;
+  margin: .15em;
   border: solid black 1px;
   text-align: center;
   display: block;
-  background-color:antiquewhite;
+  background-color:white;
 }
 
 .red {

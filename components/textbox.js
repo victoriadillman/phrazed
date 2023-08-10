@@ -1,5 +1,5 @@
-import utilStyles from '../styles/utils.module.css';
-import { forwardRef, useRef, useState } from 'react';
+// import utilStyles from '../styles/utils.module.css';
+import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable }, ref) {
@@ -43,13 +43,12 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       // Need to check if the whole phrase has been updated
       const noAlphabet = new RegExp(/[^a-zA-Z]/)
       // the pattern for no alphabet isn't working... work on this
-      if (arrLetters.includes('-') || arrLetters.includes(noAlphabet)) {
-        console.log('invalid')
-      }
-      else {
-        setArrColors(check(phrase, arrLetters))
-        setEnable(false)
-      }
+      if (arrLetters.includes('-') || arrLetters.some(letter => noAlphabet.test(letter))) {
+        console.log('invalid');
+      } else {
+        setArrColors(check(phrase, arrLetters));
+        setEnable(false);
+      }    
     }
   };
 

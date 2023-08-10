@@ -50,7 +50,7 @@ export function IndividualGuess({phrase}){
   const colorArr = [];
   for (let i = 0; i < phrase.length; i++) {
     if (phrase[i] === ' ') {
-      letterArr.push(' ')
+      letterArr.push('')
     }
     else {
       letterArr.push('-');
