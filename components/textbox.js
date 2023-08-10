@@ -1,8 +1,10 @@
 import utilStyles from '../styles/utils.module.css';
-import { forwardRef, useRef } from 'react';
+import { forwardRef, useRef, useState } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle }, ref) {
+  const [enabled, setEnable] = useState(true);
+
   const handleInputChange = (e) => {
     // Handling array for checking if argument is correct
     const newArr = [];
@@ -47,6 +49,7 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       }
       else {
         setArrColors(check(phrase, arrLetters))
+        setEnable(false)
       }
     }
   };
@@ -62,6 +65,7 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       style={{textTransform: 'uppercase'}}
       pattern="^[a-zA-Z]+$"
       title="Password should be digits (0 to 9) or alphabets (a to z)."
+      disabled={enabled ? false : true}
     />
   );
 });
