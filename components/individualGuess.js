@@ -11,17 +11,17 @@ export function IndividualGuess({phrase}){
   // Logic for blocking input on enter
   const [enabled, setEnable] = useState(true);
 
-    // Logic for hyphen
-    useEffect(() => {
-      const handleHyphen = () => {
-        if (gridRef.current && gridRef.current.scrollHeight > (refs.current[0].scrollHeight + 1)) {
-          console.log('needs hyphen');
-        } else {
-          console.log('no hyphen');
-        }
-      };
-      handleHyphen();
-    }, [gridRef]);
+    // // Logic for hyphen - VIC this is a work in progress so holding it off for now
+    // useEffect(() => {
+    //   const handleHyphen = () => {
+    //     if (gridRef.current && gridRef.current.scrollHeight > (refs.current[0].scrollHeight + 1)) {
+    //       console.log('needs hyphen');
+    //     } else {
+    //       console.log('no hyphen');
+    //     }
+    //   };
+    //   handleHyphen();
+    // }, [gridRef]);
  
   // Function for when user types in a letter
   const handleFocus = (nextIndex, backspace) => {

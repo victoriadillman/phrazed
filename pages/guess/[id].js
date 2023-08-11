@@ -1,9 +1,10 @@
 import Layout from '../../components/layouts';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IndividualGuess } from '../../components/individualGuess';
 
 export default function Game() {
+  const newGuess = useRef([]);
   const router = useRouter();
   const [phrase, setPhrase] = useState('loading');
   const [isLoading, setLoading] = useState(false);
@@ -13,6 +14,7 @@ export default function Game() {
 
     if (!router.query.id) {
       setLoading(false);
+      console.log('this is new guess:', newGuess.current)
       return;
     }
 
@@ -37,14 +39,21 @@ export default function Game() {
 
   if (isLoading) return <p>Loading...</p>;
 
+  // Rendering phrase component
+  const guessElements = [];
+  for (let i = 0; i < 5; i++) {
+    guessElements.push(
+    <IndividualGuess 
+      phrase={phrase} 
+      index={i} 
+      key={i + 'key'}
+    />)
+  }
+
   return (
   <Layout>
     <p>The phrase is: {phrase}</p>
-    <IndividualGuess phrase={phrase}/>
-    <IndividualGuess phrase={phrase}/>
-    <IndividualGuess phrase={phrase}/>
-    <IndividualGuess phrase={phrase}/>
-    <IndividualGuess phrase={phrase}/>
+    {guessElements}
   </Layout>
   );
 }
