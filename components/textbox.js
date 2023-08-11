@@ -40,15 +40,12 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       }
     }
     if (event.key === 'Enter') {
-      // Need to check if the whole phrase has been updated
       const noAlphabet = new RegExp(/[^a-zA-Z]/)
-      // the pattern for no alphabet isn't working... work on this
       if (arrLetters.includes('-') || arrLetters.some(letter => noAlphabet.test(letter))) {
         console.log('invalid');
       } else {
         setArrColors(check(phrase, arrLetters));
         setEnable(false);
-        handleNextGuess(guessIndex++);
       }    
     }
   };

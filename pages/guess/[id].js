@@ -1,10 +1,9 @@
 import Layout from '../../components/layouts';
 import { useRouter } from 'next/router';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { IndividualGuess } from '../../components/individualGuess';
 
 export default function Game() {
-  const newGuess = useRef([]);
   const router = useRouter();
   const [phrase, setPhrase] = useState('loading');
   const [isLoading, setLoading] = useState(false);
@@ -38,14 +37,6 @@ export default function Game() {
 
   if (isLoading) return <p>Loading...</p>;
 
-  // Refs for each guess
-  const handleNextGuess = (nextIndex) => {
-    const nextFocus = newGuess.current[nextIndex];
-    if (nextFocus && nextFocus.current) {
-      nextFocus.current.focus();
-    }
-  };
-
   // Rendering phrase component
   const guessElements = [];
   for (let i = 0; i < 5; i++) {
@@ -53,8 +44,6 @@ export default function Game() {
     <IndividualGuess 
       phrase={phrase}
       key={i + 'key'}
-      guessIndex={i}
-      handleNextGuess={handleNextGuess}
     />)
   }
 
