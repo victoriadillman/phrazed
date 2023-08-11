@@ -2,7 +2,7 @@
 import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
-export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable }, ref) {
+export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, guessIndex, handleNextGuess }, ref) {
 
   const handleInputChange = (e) => {
     // Handling array for checking if argument is correct
@@ -48,6 +48,7 @@ export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, i
       } else {
         setArrColors(check(phrase, arrLetters));
         setEnable(false);
+        handleNextGuess(guessIndex++);
       }    
     }
   };

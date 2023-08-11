@@ -14,7 +14,6 @@ export default function Game() {
 
     if (!router.query.id) {
       setLoading(false);
-      console.log('this is new guess:', newGuess.current)
       return;
     }
 
@@ -39,14 +38,23 @@ export default function Game() {
 
   if (isLoading) return <p>Loading...</p>;
 
+  // Refs for each guess
+  const handleNextGuess = (nextIndex) => {
+    const nextFocus = newGuess.current[nextIndex];
+    if (nextFocus && nextFocus.current) {
+      nextFocus.current.focus();
+    }
+  };
+
   // Rendering phrase component
   const guessElements = [];
   for (let i = 0; i < 5; i++) {
     guessElements.push(
     <IndividualGuess 
-      phrase={phrase} 
-      index={i} 
+      phrase={phrase}
       key={i + 'key'}
+      guessIndex={i}
+      handleNextGuess={handleNextGuess}
     />)
   }
 

@@ -3,7 +3,7 @@ import { Empty } from './empty'
 import utilStyles from '../styles/utils.module.css';
 import { useEffect, useRef, useState } from 'react';
 
-export function IndividualGuess({phrase}){
+export function IndividualGuess({phrase, handleNextGuess, newGuess, guessIndex}){
   const refs = useRef([]);
   const gridRef = useRef(null);
   const regex = new RegExp(/^[^a-zA-Z]*$/);
@@ -93,6 +93,8 @@ export function IndividualGuess({phrase}){
           ref={(el) => (refs.current[i] = el)}
           enabled={enabled}
           setEnable={setEnable}
+          guessIndex={guessIndex}
+          handleNextGuess={handleNextGuess}
         />
       );
     }
@@ -103,5 +105,4 @@ export function IndividualGuess({phrase}){
   return (
     <div className={utilStyles.grid} ref={gridRef}>{rows}</div>
   )
-
 }
