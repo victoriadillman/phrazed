@@ -1,6 +1,6 @@
 import Layout from '../../components/layouts';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IndividualGuess } from '../../components/individualGuess';
 
 export default function Game() {

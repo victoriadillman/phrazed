@@ -1,7 +1,7 @@
 import { Textbox } from './textbox';
 import { Empty } from './empty'
 import utilStyles from '../styles/utils.module.css';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 export function IndividualGuess({phrase}){
   const refs = useRef([]);
@@ -77,6 +77,24 @@ export function IndividualGuess({phrase}){
     // Logic for words
     if (regex.test(phrase[i])) {
       rows.push(<Empty key={'empty' + i} letter={phrase[i]}/>); 
+    } else if (rows.length === 0) {
+      rows.push(
+        <Textbox
+          phrase={phrase}
+          space={space}
+          backspace={backspace}
+          key={i}
+          index={i}
+          handleFocus={handleFocus}
+          arrLetters={arrLetters}
+          setArrLetters={setArrLetters}
+          setArrColors={setArrColors}
+          testStyle={utilStyles[arrColors[i]]}
+          ref={(el) => (refs.current[i] = el)}
+          enabled={enabled}
+          setEnable={setEnable}
+        />
+      );
     } else {
       rows.push(
         <Textbox
