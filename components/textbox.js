@@ -2,13 +2,15 @@
 import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
-export const Textbox = forwardRef(function Textbox({ phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable }, ref) {
+export const Textbox = forwardRef(function Textbox(
+  { phrase, space, backspace, index, propKey, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable }, 
+  ref) {
 
   const handleInputChange = (e) => {
     // Handling array for checking if argument is correct
     const newArr = [];
     arrLetters.forEach((element, i) => {
-      if (i === index) newArr.push(e.target.value.toUpperCase());
+      if (i === (index / propKey)) newArr.push(e.target.value.toUpperCase());
       else newArr.push(element);
     });
     setArrLetters(newArr);

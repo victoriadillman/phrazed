@@ -19,7 +19,6 @@ export function check(str, arr) {
       result.push('yellow')
     }
   }
-  console.log(arrWords)
   return result;
 
   // going to return an array with color codes per index! To reassign to the indexes of our boxes

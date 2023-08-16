@@ -7,6 +7,7 @@ export default function Game() {
   const router = useRouter();
   const [phrase, setPhrase] = useState('loading');
   const [isLoading, setLoading] = useState(false);
+  const guessRefs = useRef([]);
 
   useEffect(() => {
     setLoading(true)
@@ -39,11 +40,12 @@ export default function Game() {
 
   // Rendering phrase component
   const guessElements = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 10; i < 70; i += 10) {
     guessElements.push(
     <IndividualGuess 
       phrase={phrase}
-      key={i + 'key'}
+      key={i}
+      propKey={i}
     />)
   }
 
