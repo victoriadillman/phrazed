@@ -39,8 +39,6 @@ export default function Game() {
 
   if (isLoading) return <p>Loading...</p>;
 
-  // I HAVE AN IDEA!! CHANGE THE INDEX SO IT DOESN'T RESTART AT 0, BUT INSTEAD ADD IN THE NEXT STRING LENGTH
-
   // Rendering phrase component
   const guessElements = [];
   for (let i = 0; i < 6; i ++) {

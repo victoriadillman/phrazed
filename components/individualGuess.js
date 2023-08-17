@@ -13,6 +13,7 @@ export function IndividualGuess({phrase, guessPoint}){
  
   // Function for when user types in a letter
   const handleFocus = (nextIndex, backspace) => {
+    console.log(nextIndex)
     if (nextIndex < refs.current.length && refs.current[nextIndex]) {
       const nextInput = refs.current[nextIndex];
       nextInput.focus();

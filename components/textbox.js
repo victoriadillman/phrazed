@@ -10,7 +10,6 @@ export const Textbox = forwardRef(function Textbox(
     // Handling array for checking if argument is correct
     const newArr = [];
     arrLetters.forEach((element, i) => {
-      console.log('I am in the new array creation ', (index - (phrase.length * guessPoint)))
       if (i === (index - (phrase.length * guessPoint))) newArr.push(e.target.value.toUpperCase());
       else newArr.push(element);
     });
@@ -49,6 +48,7 @@ export const Textbox = forwardRef(function Textbox(
       } else {
         setArrColors(check(phrase, arrLetters));
         setEnable(false);
+        handleFocus(index + 1)
       }    
     }
   };
