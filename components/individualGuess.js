@@ -3,7 +3,7 @@ import { Empty } from './empty'
 import utilStyles from '../styles/utils.module.css';
 import { useRef, useState } from 'react';
 
-export function IndividualGuess({phrase, propKey}){
+export function IndividualGuess({phrase, guessPoint}){
   const refs = useRef([]);
   const regex = new RegExp(/^[^a-zA-Z]*$/);
 
@@ -13,7 +13,6 @@ export function IndividualGuess({phrase, propKey}){
  
   // Function for when user types in a letter
   const handleFocus = (nextIndex, backspace) => {
-    console.log('in handleFocus ', propKey)
     if (nextIndex < refs.current.length && refs.current[nextIndex]) {
       const nextInput = refs.current[nextIndex];
       nextInput.focus();
@@ -73,16 +72,16 @@ export function IndividualGuess({phrase, propKey}){
           space={space}
           backspace={backspace}
           key={i}
-          index={i * propKey}
-          propKey={propKey}
+          index={i + (phrase.length * guessPoint)}
           handleFocus={handleFocus}
           arrLetters={arrLetters}
           setArrLetters={setArrLetters}
           setArrColors={setArrColors}
           testStyle={utilStyles[arrColors[i]]}
-          ref={(el) => (refs.current[i * propKey] = el)}
+          ref={(el) => (refs.current[i + (phrase.length * guessPoint)] = el)}
           enabled={enabled}
           setEnable={setEnable}
+          guessPoint={guessPoint}
         />
       )
     }

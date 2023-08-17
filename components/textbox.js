@@ -3,14 +3,15 @@ import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox(
-  { phrase, space, backspace, index, propKey, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable }, 
+  { phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, guessPoint }, 
   ref) {
 
   const handleInputChange = (e) => {
     // Handling array for checking if argument is correct
     const newArr = [];
     arrLetters.forEach((element, i) => {
-      if (i === (index / propKey)) newArr.push(e.target.value.toUpperCase());
+      console.log('I am in the new array creation ', (index - (phrase.length * guessPoint)))
+      if (i === (index - (phrase.length * guessPoint))) newArr.push(e.target.value.toUpperCase());
       else newArr.push(element);
     });
     setArrLetters(newArr);
@@ -37,14 +38,14 @@ export const Textbox = forwardRef(function Textbox(
           handleFocus(index - 2, true)
         }
           handleFocus(index - 1, true);
-      } else {
+      } else { 
         event.target.value = '';
       }
     }
     if (event.key === 'Enter') {
       const noAlphabet = new RegExp(/[^a-zA-Z]/)
       if (arrLetters.includes('-') || arrLetters.some(letter => noAlphabet.test(letter))) {
-        console.log('invalid');
+        console.log('invalid ', arrLetters);
       } else {
         setArrColors(check(phrase, arrLetters));
         setEnable(false);
