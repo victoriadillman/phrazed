@@ -9,10 +9,10 @@ export default function Game() {
   const router = useRouter();
   const [phrase, setPhrase] = useState('loading');
   const [isLoading, setLoading] = useState(false);
+  const [isEnabled, setEnable] = useState([])
   const mainRef = useRef([]);
 
   const handleMainFocus = (nextIndex, backspace) => {
-    console.log('in the main focus')
     if (nextIndex < mainRef.current.length && mainRef.current[nextIndex]) {
       const nextInput = mainRef.current[nextIndex];
       nextInput.focus();
@@ -65,6 +65,8 @@ export default function Game() {
   // Rendering phrase component
   const guessElements = [];
   for (let i = 0; i < 6; i ++) {
+    if (i === 0) isEnabled.push(true);
+    else isEnabled.push(false);
     guessElements.push(
       <IndividualGuess 
         phrase={phrase}
@@ -72,6 +74,8 @@ export default function Game() {
         guessPoint={i}
         mainRef={mainRef}
         handleMainFocus={handleMainFocus}
+        isEnabled={isEnabled}
+        setEnable={setEnable}
       />
     );
   }

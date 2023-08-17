@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox(
-  { phrase, space, backspace, index, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, guessPoint, handleMainFocus }, 
+  { phrase, space, backspace, index, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, isEnabled, guessPoint, handleMainFocus }, 
   ref) {
 
   const handleInputChange = (e) => {
@@ -44,11 +44,18 @@ export const Textbox = forwardRef(function Textbox(
     if (event.key === 'Enter') {
       const noAlphabet = new RegExp(/[^a-zA-Z]/)
       if (arrLetters.includes('-') || arrLetters.some(letter => noAlphabet.test(letter))) {
-        console.log('invalid ', arrLetters);
+        console.log('invalid');
       } else {
         setArrColors(check(phrase, arrLetters));
-        setEnable(false);
-        handleMainFocus(index + 1)
+        handleMainFocus(index + 1);
+        // Enable move
+        const newEnable = [];
+        for (let i = 0; i < isEnabled.length; i++) {
+          if (i === (guessPoint + 1)) {
+            newEnable.push(true)
+          } else newEnable.push(false)
+        }
+        setEnable(newEnable)
       }    
     }
   };

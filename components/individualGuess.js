@@ -3,12 +3,8 @@ import { Empty } from './empty'
 import utilStyles from '../styles/utils.module.css';
 import { useState } from 'react';
 
-export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus}){
+export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, isEnabled, setEnable}){
   const regex = new RegExp(/^[^a-zA-Z]*$/);
-
-
-  // Logic for blocking input on enter
-  const [enabled, setEnable] = useState(true);
 
   // Creating check letter logic (with colors)
   const letterArr = [];
@@ -55,8 +51,9 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus}){
           setArrColors={setArrColors}
           testStyle={utilStyles[arrColors[i]]}
           ref={(el) => (mainRef.current[i + (phrase.length * guessPoint)] = el)}
-          enabled={enabled}
+          enabled={isEnabled[guessPoint]}
           setEnable={setEnable}
+          isEnabled={isEnabled}
           guessPoint={guessPoint}
           handleMainFocus={handleMainFocus}
         />
