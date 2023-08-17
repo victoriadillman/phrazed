@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox(
-  { phrase, space, backspace, index, handleFocus, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, guessPoint }, 
+  { phrase, space, backspace, index, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, guessPoint, handleMainFocus }, 
   ref) {
 
   const handleInputChange = (e) => {
@@ -17,10 +17,10 @@ export const Textbox = forwardRef(function Textbox(
 
     // Handling cursor movement
     if (space) {
-      handleFocus(index + 2, false);
+      handleMainFocus(index + 2, false);
     }
     else {
-      handleFocus(index + 1, false);
+      handleMainFocus(index + 1, false);
     }
   };
 
@@ -34,9 +34,9 @@ export const Textbox = forwardRef(function Textbox(
 
       if (value === '') {
         if (backspace) {
-          handleFocus(index - 2, true)
+          handleMainFocus(index - 2, true)
         }
-          handleFocus(index - 1, true);
+        handleMainFocus(index - 1, true);
       } else { 
         event.target.value = '';
       }
@@ -48,7 +48,7 @@ export const Textbox = forwardRef(function Textbox(
       } else {
         setArrColors(check(phrase, arrLetters));
         setEnable(false);
-        handleFocus(index + 1)
+        handleMainFocus(index + 1)
       }    
     }
   };

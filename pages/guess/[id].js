@@ -1,6 +1,6 @@
 import Layout from '../../components/layouts';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IndividualGuess } from '../../components/individualGuess';
 
 // Wrap the functional component with React.forwardRef
@@ -9,6 +9,29 @@ export default function Game() {
   const router = useRouter();
   const [phrase, setPhrase] = useState('loading');
   const [isLoading, setLoading] = useState(false);
+  const mainRef = useRef([]);
+
+  const handleMainFocus = (nextIndex, backspace) => {
+    console.log('in the main focus')
+    if (nextIndex < mainRef.current.length && mainRef.current[nextIndex]) {
+      const nextInput = mainRef.current[nextIndex];
+      nextInput.focus();
+      if (backspace) {
+        nextInput.value = '';
+      }
+    }
+    else if (nextIndex > mainRef.current.length || nextIndex < 0) {
+      return;
+    }
+    else {
+      if (backspace) {
+        handleMainFocus(nextIndex -1, true);
+      }
+      else {
+        handleMainFocus(nextIndex + 1, false);
+      }
+    }
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -47,6 +70,8 @@ export default function Game() {
         phrase={phrase}
         key={i}
         guessPoint={i}
+        mainRef={mainRef}
+        handleMainFocus={handleMainFocus}
       />
     );
   }
