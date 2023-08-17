@@ -1,38 +1,14 @@
 import { Textbox } from './textbox';
 import { Empty } from './empty'
 import utilStyles from '../styles/utils.module.css';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
-export function IndividualGuess({phrase, guessPoint}){
-  const refs = useRef([]);
+export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus}){
   const regex = new RegExp(/^[^a-zA-Z]*$/);
 
 
   // Logic for blocking input on enter
   const [enabled, setEnable] = useState(true);
- 
-  // Function for when user types in a letter
-  const handleFocus = (nextIndex, backspace) => {
-    console.log(nextIndex)
-    if (nextIndex < refs.current.length && refs.current[nextIndex]) {
-      const nextInput = refs.current[nextIndex];
-      nextInput.focus();
-      if (backspace) {
-        nextInput.value = '';
-      }
-    }
-    else if (nextIndex > refs.current.length || nextIndex < 0) {
-      return;
-    }
-    else {
-      if (backspace) {
-        handleFocus(nextIndex - 1, true)
-      }
-      else {
-        handleFocus(nextIndex + 1, false)
-      }
-    }
-  };
 
   // Creating check letter logic (with colors)
   const letterArr = [];
@@ -74,15 +50,15 @@ export function IndividualGuess({phrase, guessPoint}){
           backspace={backspace}
           key={i}
           index={i + (phrase.length * guessPoint)}
-          handleFocus={handleFocus}
           arrLetters={arrLetters}
           setArrLetters={setArrLetters}
           setArrColors={setArrColors}
           testStyle={utilStyles[arrColors[i]]}
-          ref={(el) => (refs.current[i + (phrase.length * guessPoint)] = el)}
+          ref={(el) => (mainRef.current[i + (phrase.length * guessPoint)] = el)}
           enabled={enabled}
           setEnable={setEnable}
           guessPoint={guessPoint}
+          handleMainFocus={handleMainFocus}
         />
       )
     }
