@@ -47,7 +47,6 @@ export const Textbox = forwardRef(function Textbox(
         console.log('invalid');
       } else {
         setArrColors(check(phrase, arrLetters));
-        handleMainFocus(index + 1);
         // Enable move
         const newEnable = [];
         for (let i = 0; i < isEnabled.length; i++) {
@@ -55,7 +54,7 @@ export const Textbox = forwardRef(function Textbox(
             newEnable.push(true)
           } else newEnable.push(false)
         }
-        setEnable(newEnable)
+        setEnable(newEnable);
       }    
     }
   };

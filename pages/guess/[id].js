@@ -34,6 +34,16 @@ export default function Game() {
   }
 
   useEffect(() => {
+    let phraseSpot = 0;
+    let hitTrue = false;
+    isEnabled.forEach(elem => {
+      if (elem) hitTrue = true;
+      else if (!hitTrue) phraseSpot++;
+    })
+    handleMainFocus((phraseSpot * phrase.length), false)
+  }, [isEnabled])
+
+  useEffect(() => {
     setLoading(true)
 
     if (!router.query.id) {
@@ -56,7 +66,7 @@ export default function Game() {
       .then((res) => res.json())
       .then((data) => {
         setPhrase(data.phrase.toUpperCase());
-        setLoading(false)
+        setLoading(false);
       })
   }, [router.query.id]);
 
