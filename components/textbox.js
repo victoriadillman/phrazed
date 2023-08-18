@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox(
-  { phrase, space, backspace, index, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, isEnabled, guessPoint, handleMainFocus }, 
+  { phrase, space, backspace, index, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, isEnabled, guessPoint, handleMainFocus, focusing }, 
   ref) {
 
   const handleInputChange = (e) => {
@@ -71,6 +71,7 @@ export const Textbox = forwardRef(function Textbox(
       pattern="^[a-zA-Z]+$"
       title="Password should be digits (0 to 9) or alphabets (a to z)."
       disabled={enabled ? false : true}
+      autoFocus={focusing}
     />
   );
 });

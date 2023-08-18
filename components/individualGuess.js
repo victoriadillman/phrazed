@@ -38,6 +38,27 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
     // Logic for words
     if (regex.test(phrase[i])) {
       rows.push(<Empty key={'empty' + i} letter={phrase[i]}/>); 
+    } else if (rows.length === 0 && guessPoint === 0) {
+      rows.push(
+        <Textbox
+          phrase={phrase}
+          space={space}
+          backspace={backspace}
+          key={i}
+          index={i + (phrase.length * guessPoint)}
+          arrLetters={arrLetters}
+          setArrLetters={setArrLetters}
+          setArrColors={setArrColors}
+          testStyle={utilStyles[arrColors[i]]}
+          ref={(el) => (mainRef.current[i + (phrase.length * guessPoint)] = el)}
+          enabled={isEnabled[guessPoint]}
+          setEnable={setEnable}
+          isEnabled={isEnabled}
+          guessPoint={guessPoint}
+          handleMainFocus={handleMainFocus}
+          focusing={true}
+        />
+      )
     } else {
       rows.push(
         <Textbox
@@ -56,6 +77,7 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
           isEnabled={isEnabled}
           guessPoint={guessPoint}
           handleMainFocus={handleMainFocus}
+          focusing={false}
         />
       )
     }
