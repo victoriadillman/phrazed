@@ -28,7 +28,6 @@ export const Textbox = forwardRef(function Textbox(
     
     if (event.key === 'Backspace') {
       event.preventDefault(); 
-      console.log('delete')
 
       const value = event.target.value; 
 
@@ -43,6 +42,7 @@ export const Textbox = forwardRef(function Textbox(
     }
     if (event.key === 'Enter') {
       const noAlphabet = new RegExp(/[^a-zA-Z]/)
+      // I just realized people might want to use a dash in their expression so this logic doesn't quite work
       if (arrLetters.includes('-') || arrLetters.some(letter => noAlphabet.test(letter))) {
         console.log('invalid');
       } else {
