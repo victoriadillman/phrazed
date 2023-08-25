@@ -10,11 +10,12 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
   const letterArr = [];
   const colorArr = [];
   for (let i = 0; i < phrase.length; i++) {
-    if (phrase[i] === ' ') {
+    const noAlphabet = new RegExp(/[^a-zA-Z]/)
+    if (phrase[i] === ' ' || noAlphabet.test(phrase[i])) {
       letterArr.push('')
     }
     else {
-      letterArr.push('-');
+      letterArr.push('no');
     }
     colorArr.push('white')
   }
