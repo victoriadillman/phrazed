@@ -42,11 +42,15 @@ export const Textbox = forwardRef(function Textbox(
     }
     if (event.key === 'Enter') {
       const noAlphabet = new RegExp(/[^a-zA-Z]/)
-      // I just realized people might want to use a dash in their expression so this logic doesn't quite work
       if (arrLetters.includes('no') || arrLetters.some(letter => noAlphabet.test(letter))) {
         console.log('invalid');
       } else {
-        setArrColors(check(phrase, arrLetters));
+        // Victoria - this is kind of working BUT it keeps saying false, even when should be true
+        const checkResult = check(phrase, arrLetters)
+        setArrColors(checkResult[0]);
+        if (!checkResult[1]) {
+          alert('nope')
+        }
         // Enable move
         const newEnable = [];
         for (let i = 0; i < isEnabled.length; i++) {

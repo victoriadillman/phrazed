@@ -2,6 +2,7 @@ export function check(str, arr) {
   const result = [];
   let wordcount = 0;
   const arrWords = str.split(' ');
+  let success = true;
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === ' ') wordcount++;
@@ -10,16 +11,18 @@ export function check(str, arr) {
       result.push('green');
     }
     else if (!str.includes(arr[i])) {
-      result.push('red')
+      result.push('red');
+      success = false;
     }
     else if (arrWords[wordcount].includes(arr[i])) {
-      result.push('purple')
+      result.push('purple');
+      success = false;
     }
     else {
-      result.push('yellow')
+      result.push('yellow');
+      success = false;
     }
   }
-  return result;
+  return [result, success];
 
-  // going to return an array with color codes per index! To reassign to the indexes of our boxes
 }
