@@ -3,12 +3,14 @@ export function check(str, arr) {
   let wordcount = 0;
   const arrWords = str.split(' ');
   let success = true;
-  console.log(arr, str)
   for (let i = 0; i < arr.length; i++) {
     
-    if (arr[i] === ' ') wordcount++;
+    if (arr[i] === '') {
+      wordcount++;
+      result.push('green')
+    }
 
-    if (arr[i] === str[i]) {
+    else if (arr[i] === str[i]) {
       result.push('green');
     }
     else if (!str.includes(arr[i])) {

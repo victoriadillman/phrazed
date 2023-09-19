@@ -24,6 +24,7 @@ export const Textbox = forwardRef(function Textbox(
     }
   };
 
+  // Handling typing inputs
   const handleOnKeyDown = event => {
     
     if (event.key === 'Backspace') {
@@ -49,8 +50,11 @@ export const Textbox = forwardRef(function Textbox(
         const checkResult = check(phrase, arrLetters)
         setArrColors(checkResult[0]);
         if (!checkResult[1]) {
-          console.log(checkResult[1])
+          console.log(checkResult[1], checkResult[0])
           alert('nope')
+        }
+        else {
+          alert('yeah boi')
         }
         // Enable move
         const newEnable = [];
