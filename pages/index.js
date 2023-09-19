@@ -4,11 +4,12 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import { URL } from '../components/URL';
 import { Entry } from '../components/entry';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Home() {
   const [isGenerated, setGenerate] = useState(false);
   const [isURL, setURL] = useState('');
+  const ref = useRef(null)
 
   function turnTrue() {
     setGenerate(true)
@@ -16,6 +17,12 @@ export default function Home() {
   function writeURL(string) {
     setURL(string)
   }
+
+  useEffect(() => {
+    const focus = ref.current;
+    if (focus !== null) focus.focus()
+  }, [ref])
+  // Victoria - I need to use forwardRef because nextjs autofocus isn't working here for some reason
 
   return (
     <Layout home>
@@ -27,7 +34,10 @@ export default function Home() {
         <br/>
         <p>How does it work? <Link href='/about/how-it-works'>Click here for details</Link></p>
         <br/>
-        <Entry isGenerated={isGenerated} turnTrue={turnTrue} writeURL={writeURL}/>
+        <Entry 
+        ref={(el) => (ref.current = el)} 
+        turnTrue={turnTrue} 
+        writeURL={writeURL}/>
         <br></br>
         <div>
           {isGenerated && <URL isURL={isURL}/>}

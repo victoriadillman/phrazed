@@ -3,8 +3,9 @@ export function check(str, arr) {
   let wordcount = 0;
   const arrWords = str.split(' ');
   let success = true;
-
+  console.log(arr, str)
   for (let i = 0; i < arr.length; i++) {
+    
     if (arr[i] === ' ') wordcount++;
 
     if (arr[i] === str[i]) {

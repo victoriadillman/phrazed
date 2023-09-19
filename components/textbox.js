@@ -49,6 +49,7 @@ export const Textbox = forwardRef(function Textbox(
         const checkResult = check(phrase, arrLetters)
         setArrColors(checkResult[0]);
         if (!checkResult[1]) {
+          console.log(checkResult[1])
           alert('nope')
         }
         // Enable move
