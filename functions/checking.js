@@ -14,15 +14,15 @@ export function check(str, arr) {
       result.push('green');
     }
     else if (!str.includes(arr[i])) {
-      result.push('red');
+      result.push('gray');
       success = false;
     }
     else if (arrWords[wordcount].includes(arr[i])) {
-      result.push('purple');
+      result.push('yellow');
       success = false;
     }
     else {
-      result.push('yellow');
+      result.push('purple');
       success = false;
     }
   }

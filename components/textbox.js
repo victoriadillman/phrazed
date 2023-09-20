@@ -46,11 +46,9 @@ export const Textbox = forwardRef(function Textbox(
       if (arrLetters.includes('no') || arrLetters.some(letter => noAlphabet.test(letter))) {
         console.log('invalid');
       } else {
-        // Victoria - this is kind of working BUT it keeps saying false, even when should be true
         const checkResult = check(phrase, arrLetters)
         setArrColors(checkResult[0]);
         if (!checkResult[1]) {
-          console.log(checkResult[1], checkResult[0])
           alert('nope')
         }
         else {
@@ -78,7 +76,6 @@ export const Textbox = forwardRef(function Textbox(
       ref={ref}
       style={{textTransform: 'uppercase'}}
       pattern="^[a-zA-Z]+$"
-      title="Password should be digits (0 to 9) or alphabets (a to z)."
       disabled={enabled ? false : true}
       autoFocus={focusing}
     />

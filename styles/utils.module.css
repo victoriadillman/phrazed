@@ -85,21 +85,21 @@
   background-color:white;
 }
 
-.red {
+.gray {
   width: 2.5em;
   height: 2.5em;
   margin: .15em;
-  border: solid black 1px;
+  border: solid gray 1px;
   text-align: center;
   display: block;
-  background-color: red;
+  background-color: gray;
 }
 
 .green {
   width: 2.5em;
   height: 2.5em;
   margin: .15em;
-  border: solid black 1px;
+  border: solid green 1px;
   text-align: center;
   display: block;
   background-color: green;
@@ -109,7 +109,7 @@
   width: 2.5em;
   height: 2.5em;
   margin: .15em;
-  border: solid black 1px;
+  border: solid yellow 1px;
   text-align: center;
   display: block;
   background-color: yellow;
@@ -119,7 +119,7 @@
   width: 2.5em;
   height: 2.5em;
   margin: .15em;
-  border: solid black 1px;
+  border: solid purple 1px;
   text-align: center;
   display: block;
   background-color: purple;
