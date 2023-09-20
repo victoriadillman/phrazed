@@ -2,6 +2,7 @@ import Layout from '../../components/layouts';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import { IndividualGuess } from '../../components/individualGuess';
+import { Keyboard } from '../../components/keyboard';
 
 // Wrap the functional component with React.forwardRef
 
@@ -94,6 +95,7 @@ export default function Game() {
     <Layout>
       {/* <p>The phrase is: {phrase}</p> */}
       {guessElements}
+      <Keyboard />
     </Layout>
   );
 }
