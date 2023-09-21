@@ -12,6 +12,8 @@ export default function Game() {
   const [isLoading, setLoading] = useState(false);
   const [isEnabled, setEnable] = useState([])
   const mainRef = useRef([]);
+  // Working on this - idea is changing the keyboard letter to only one val at a time and that will update and use textbox logic
+  const [keyboardLetter, setKeyboardLetter] = useState(null)
 
   const handleMainFocus = (nextIndex, backspace) => {
     if (nextIndex < mainRef.current.length && mainRef.current[nextIndex]) {
@@ -87,6 +89,7 @@ export default function Game() {
         handleMainFocus={handleMainFocus}
         isEnabled={isEnabled}
         setEnable={setEnable}
+        keyboardLetter={keyboardLetter}
       />
     );
   }
@@ -95,7 +98,10 @@ export default function Game() {
     <Layout>
       {/* <p>The phrase is: {phrase}</p> */}
       {guessElements}
-      <Keyboard />
+      <Keyboard 
+        keyboardLetter={keyboardLetter}
+        setKeyboardLetter={setKeyboardLetter}
+      />
     </Layout>
   );
 }

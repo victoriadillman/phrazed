@@ -19,6 +19,7 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
     }
     colorArr.push('white')
   }
+  // VICTORIA - this needs to be moved over to ID
   const [arrLetters, setArrLetters] = useState(letterArr);
   const [arrColors, setArrColors] = useState(colorArr);
   
