@@ -1,27 +1,33 @@
 import { Textbox } from './textbox';
 import { Empty } from './empty'
 import utilStyles from '../styles/utils.module.css';
-import { useState } from 'react';
+import { useEffect } from 'react';
 
-export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, isEnabled, setEnable}){
+export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, isEnabled, setEnable, objLetters, setObjLetters, objColors, setObjColors}){
   const regex = new RegExp(/^[^a-zA-Z]*$/);
 
   // Creating check letter logic (with colors)
-  const letterArr = [];
-  const colorArr = [];
-  for (let i = 0; i < phrase.length; i++) {
-    const noAlphabet = new RegExp(/[^a-zA-Z]/)
-    if (phrase[i] === ' ' || noAlphabet.test(phrase[i])) {
-      letterArr.push('')
+  useEffect(() => {
+    const letterArr = [];
+    const colorArr = [];
+    for (let i = 0; i < phrase.length; i++) {
+      const noAlphabet = new RegExp(/[^a-zA-Z]/)
+      if (phrase[i] === ' ' || noAlphabet.test(phrase[i])) {
+        letterArr.push('')
+      }
+      else {
+        letterArr.push('no');
+      }
+      colorArr.push('white')
     }
-    else {
-      letterArr.push('no');
-    }
-    colorArr.push('white')
-  }
-  // VICTORIA - this needs to be moved over to ID
-  const [arrLetters, setArrLetters] = useState(letterArr);
-  const [arrColors, setArrColors] = useState(colorArr);
+    const copyObjColor = objColors;
+    const copyObjLetter = objLetters;
+    copyObjColor[guessPoint] = colorArr;
+    copyObjLetter[guessPoint] = letterArr;
+    setObjColors(copyObjColor);
+    setObjLetters(copyObjLetter);
+    console.log(objColors[guessPoint][0])
+  }, []);
   
   // Logic for the original delivery of rows
   let rows = [];
@@ -48,10 +54,11 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
           backspace={backspace}
           key={i}
           index={i + (phrase.length * guessPoint)}
-          arrLetters={arrLetters}
-          setArrLetters={setArrLetters}
-          setArrColors={setArrColors}
-          testStyle={utilStyles[arrColors[i]]}
+          objLetters={objLetters}
+          setObjLetters={setObjLetters}
+          objColors={objColors}
+          setObjColors={setObjColors}
+          testStyle={objColors[guessPoint] === undefined ? utilStyles['white'] : utilStyles[objColors[guessPoint][i]]}
           ref={(el) => (mainRef.current[i + (phrase.length * guessPoint)] = el)}
           enabled={isEnabled[guessPoint]}
           setEnable={setEnable}
@@ -69,10 +76,11 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
           backspace={backspace}
           key={i}
           index={i + (phrase.length * guessPoint)}
-          arrLetters={arrLetters}
-          setArrLetters={setArrLetters}
-          setArrColors={setArrColors}
-          testStyle={utilStyles[arrColors[i]]}
+          objLetters={objLetters}
+          setObjLetters={setObjLetters}
+          objColors={objColors}
+          setObjColors={setObjColors}
+          testStyle={objColors[guessPoint] === undefined ? utilStyles['white'] : utilStyles[objColors[guessPoint][i]]}
           ref={(el) => (mainRef.current[i + (phrase.length * guessPoint)] = el)}
           enabled={isEnabled[guessPoint]}
           setEnable={setEnable}

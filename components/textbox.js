@@ -3,17 +3,19 @@ import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox(
-  { phrase, space, backspace, index, arrLetters, setArrLetters, setArrColors, testStyle, enabled, setEnable, isEnabled, guessPoint, handleMainFocus, focusing }, 
+  { phrase, space, backspace, index, objLetters, setObjLetters, objColors, setObjColors, testStyle, enabled, setEnable, isEnabled, guessPoint, handleMainFocus, focusing }, 
   ref) {
 
   const handleInputChange = (e) => {
     // Handling array for checking if argument is correct
     const newArr = [];
-    arrLetters.forEach((element, i) => {
+    objLetters[guessPoint].forEach((element, i) => {
       if (i === (index - (phrase.length * guessPoint))) newArr.push(e.target.value.toUpperCase());
       else newArr.push(element);
     });
-    setArrLetters(newArr);
+    const copyObjLetters = objLetters;
+    copyObjLetters[guessPoint] = newArr;
+    setObjLetters(copyObjLetters);
 
     // Handling cursor movement
     if (space) {
@@ -43,11 +45,14 @@ export const Textbox = forwardRef(function Textbox(
     }
     if (event.key === 'Enter') {
       const noAlphabet = new RegExp(/[^a-zA-Z]/)
-      if (arrLetters.includes('no') || arrLetters.some(letter => noAlphabet.test(letter))) {
+      if (objLetters[guessPoint].includes('no') || objLetters[guessPoint].some(letter => noAlphabet.test(letter))) {
         console.log('invalid');
       } else {
-        const checkResult = check(phrase, arrLetters)
-        setArrColors(checkResult[0]);
+        const checkResult = check(phrase, objLetters[guessPoint])
+        console.log('here is result of calling checkResult', checkResult);
+        const repeatObjColor = objColors;
+        objColors[guessPoint] = checkResult[0]
+        setObjColors(repeatObjColor);
         if (!checkResult[1]) {
           alert('nope')
         }
