@@ -48,9 +48,7 @@ export default function Game() {
     })
     console.log('in the new focus func', phraseSpot * phrase.length)
     // Hypothetically, this gives the new index number
-    
-    handleMainFocus((phraseSpot * phrase.length), false)
-    
+    setTimeout(() => handleMainFocus((phraseSpot * phrase.length), false), 0)
   }, [isEnabled])
 
   useEffect(() => {
