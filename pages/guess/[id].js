@@ -48,7 +48,9 @@ export default function Game() {
     })
     console.log('in the new focus func', phraseSpot * phrase.length)
     // Hypothetically, this gives the new index number
+    
     handleMainFocus((phraseSpot * phrase.length), false)
+    
   }, [isEnabled])
 
   useEffect(() => {
@@ -79,7 +81,7 @@ export default function Game() {
   }, [router.query.id]);
 
   if (isLoading) return <p>Loading...</p>;
-
+    
   // Rendering phrase component
   const guessElements = [];
   for (let i = 0; i < 6; i ++) {
