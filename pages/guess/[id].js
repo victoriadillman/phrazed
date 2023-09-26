@@ -20,6 +20,7 @@ export default function Game() {
   const handleMainFocus = (nextIndex, backspace) => {
     if (nextIndex < mainRef.current.length && mainRef.current[nextIndex]) {
       const nextInput = mainRef.current[nextIndex];
+      console.log(nextInput);
       nextInput.focus();
       if (backspace) {
         nextInput.value = '';
@@ -45,6 +46,8 @@ export default function Game() {
       if (elem) hitTrue = true;
       else if (!hitTrue) phraseSpot++;
     })
+    console.log('in the new focus func', phraseSpot * phrase.length)
+    // Hypothetically, this gives the new index number
     handleMainFocus((phraseSpot * phrase.length), false)
   }, [isEnabled])
 

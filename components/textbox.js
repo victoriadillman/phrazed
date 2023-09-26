@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox(
-  { phrase, space, backspace, index, objLetters, setObjLetters, objColors, setObjColors, testStyle, enabled, setEnable, isEnabled, guessPoint, handleMainFocus, focusing }, 
+  { phrase, space, backspace, index, objLetters, setObjLetters, objColors, setObjColors, testStyle, setEnable, isEnabled, guessPoint, handleMainFocus, focusing }, 
   ref) {
 
   const handleInputChange = (e) => {
@@ -48,11 +48,13 @@ export const Textbox = forwardRef(function Textbox(
       if (objLetters[guessPoint].includes('no') || objLetters[guessPoint].some(letter => noAlphabet.test(letter))) {
         console.log('invalid');
       } else {
+        // checkResult returns array of new colors, and boolean of whether guess was right
         const checkResult = check(phrase, objLetters[guessPoint])
-        console.log('here is result of calling checkResult', checkResult);
-        const repeatObjColor = objColors;
-        objColors[guessPoint] = checkResult[0]
+        // Updating colors
+        const repeatObjColor = {...objColors};
+        repeatObjColor[guessPoint] = checkResult[0];
         setObjColors(repeatObjColor);
+
         if (!checkResult[1]) {
           alert('nope')
         }
@@ -60,13 +62,12 @@ export const Textbox = forwardRef(function Textbox(
           alert('yeah boi')
         }
         // Enable move
-        const newEnable = [];
-        for (let i = 0; i < isEnabled.length; i++) {
-          if (i === (guessPoint + 1)) {
-            newEnable.push(true)
-          } else newEnable.push(false)
-        }
-        setEnable(newEnable);
+        setEnable(isEnabled => {
+          const newEnable = [...isEnabled];
+          newEnable[guessPoint] = false;
+          newEnable[guessPoint + 1] = true;
+          return newEnable;
+        });
       }    
     }
   };
@@ -81,7 +82,7 @@ export const Textbox = forwardRef(function Textbox(
       ref={ref}
       style={{textTransform: 'uppercase'}}
       pattern="^[a-zA-Z]+$"
-      disabled={enabled ? false : true}
+      disabled={isEnabled[guessPoint] ? false : true}
       autoFocus={focusing}
     />
   );

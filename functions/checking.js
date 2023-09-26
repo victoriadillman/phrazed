@@ -27,5 +27,4 @@ export function check(str, arr) {
     }
   }
   return [result, success];
-
 }
