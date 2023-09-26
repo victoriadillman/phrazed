@@ -62,7 +62,6 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
               setObjColors={setObjColors}
               testStyle={utilStyles[objColors[guessPoint][i]]}
               ref={(el) => (mainRef.current[i + (phrase.length * guessPoint)] = el)}
-              enabled={isEnabled[guessPoint]}
               setEnable={setEnable}
               isEnabled={isEnabled}
               guessPoint={guessPoint}
