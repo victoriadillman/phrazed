@@ -6,9 +6,10 @@ const openai = new OpenAI({
 
 export default async function handler(req, res) {
     const completion = await openai.chat.completions.create({
-      messages: [{role: "user", content: "Give me a family friend phrase commonly said in the English language."}],
+      messages: [{role: "user", content: "Tell me a phrase said in the English language."}],
       model: "gpt-3.5-turbo",
-      
+      temperature: 1,
+      max_tokens: 10
     });
-    res.status(200).json(completion.choices);
+    res.status(200).json(completion.choices[0]['message']['content']);
 }
