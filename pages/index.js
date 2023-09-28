@@ -10,13 +10,29 @@ import { useState, useRef, useEffect } from 'react';
 export default function Home() {
   const [isGenerated, setGenerate] = useState(false);
   const [isURL, setURL] = useState('');
-  const ref = useRef(null)
+  const ref = useRef(null);
 
-  function turnTrue() {
-    setGenerate(true)
-  }
-  function writeURL(string) {
-    setURL(string)
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = {
+      phrase: event.target.phrase.value
+    };
+    const JSONdata = JSON.stringify(data);
+    const endpoint = '/api/generate-link';
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSONdata,
+    }
+
+    const response = await fetch(endpoint, options)
+    const result = await response.json();
+    setGenerate(true);
+    setURL(result.urlAdd)
   }
 
   useEffect(() => {
@@ -36,9 +52,9 @@ export default function Home() {
         <br/>
         <Entry 
         ref={(el) => (ref.current = el)} 
-        turnTrue={turnTrue} 
-        writeURL={writeURL}/>
-        <Random />
+        handleSubmit={handleSubmit}/>
+        <Random 
+        handleSubmit={handleSubmit}/>
         <br></br>
         <div>
           {isGenerated && <URL isURL={isURL}/>}
