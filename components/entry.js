@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-// Victoria, figure out how to wrap the forward ref
 
 export const Entry = forwardRef(function Entry({turnTrue, writeURL}, ref) {
   
