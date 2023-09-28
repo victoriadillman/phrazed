@@ -46,7 +46,7 @@ export const Textbox = forwardRef(function Textbox(
     if (event.key === 'Enter') {
       const noAlphabet = new RegExp(/[^a-zA-Z]/)
       if (objLetters[guessPoint].includes('no') || objLetters[guessPoint].some(letter => noAlphabet.test(letter))) {
-        console.log('invalid');
+        alert('invalid');
       } else {
         // checkResult returns array of new colors, and boolean of whether guess was right
         const checkResult = check(phrase, objLetters[guessPoint])

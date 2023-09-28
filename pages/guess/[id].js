@@ -17,10 +17,10 @@ export default function Game() {
   const [objLetters, setObjLetters] = useState({});
   const [objColors, setObjColors] = useState({});
 
+  // Pulling up the next input focus on entry, called through the textbox component
   const handleMainFocus = (nextIndex, backspace) => {
     if (nextIndex < mainRef.current.length && mainRef.current[nextIndex]) {
       const nextInput = mainRef.current[nextIndex];
-      console.log(nextInput);
       nextInput.focus();
       if (backspace) {
         nextInput.value = '';

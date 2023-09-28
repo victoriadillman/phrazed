@@ -38,11 +38,11 @@ export default function Home() {
         ref={(el) => (ref.current = el)} 
         turnTrue={turnTrue} 
         writeURL={writeURL}/>
+        <Random />
         <br></br>
         <div>
           {isGenerated && <URL isURL={isURL}/>}
         </div>
-        <Random />
       </section>
     </Layout>
   );
