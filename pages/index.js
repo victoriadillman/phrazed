@@ -4,6 +4,7 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import { URL } from '../components/URL';
 import { Entry } from '../components/entry';
+import { Random } from '../components/random';
 import { useState, useRef, useEffect } from 'react';
 
 export default function Home() {
@@ -22,7 +23,6 @@ export default function Home() {
     const focus = ref.current;
     if (focus !== null) focus.focus()
   }, [ref])
-  // Victoria - I need to use forwardRef because nextjs autofocus isn't working here for some reason
 
   return (
     <Layout home>
@@ -42,6 +42,7 @@ export default function Home() {
         <div>
           {isGenerated && <URL isURL={isURL}/>}
         </div>
+        <Random />
       </section>
     </Layout>
   );

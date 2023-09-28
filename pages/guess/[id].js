@@ -38,7 +38,7 @@ export default function Game() {
       }
     }
   }
-
+  // Func for re-focusing after row submit
   useEffect(() => {
     let phraseSpot = 0;
     let hitTrue = false;
@@ -46,14 +46,13 @@ export default function Game() {
       if (elem) hitTrue = true;
       else if (!hitTrue) phraseSpot++;
     })
-    console.log('in the new focus func', phraseSpot * phrase.length)
-    // Hypothetically, this gives the new index number
+    // Not great to be using setTimeout.. try to find another solution
     setTimeout(() => handleMainFocus((phraseSpot * phrase.length), false), 0)
   }, [isEnabled])
 
   useEffect(() => {
     setLoading(true)
-
+    
     if (!router.query.id) {
       setLoading(false);
       return;
