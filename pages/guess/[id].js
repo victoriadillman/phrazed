@@ -104,8 +104,9 @@ export default function Game() {
 
   return (
     <Layout>
-      <p>The phrase is: {phrase}</p>
+      {/* <p>The phrase is: {phrase}</p> */}
       {guessElements}
+      <br></br>
       <Keyboard 
         keyboardLetter={keyboardLetter}
         setKeyboardLetter={setKeyboardLetter}

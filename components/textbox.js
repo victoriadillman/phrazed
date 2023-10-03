@@ -55,6 +55,11 @@ export const Textbox = forwardRef(function Textbox(
         repeatObjColor[guessPoint] = checkResult[0];
         setObjColors(repeatObjColor);
 
+        // Logic for keyboard colors
+        const newKeyboardLetter = [];
+        // for ()
+
+        // Logic for yes vs no
         if (!checkResult[1]) {
           alert('nope')
         }

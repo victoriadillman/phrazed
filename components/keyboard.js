@@ -30,7 +30,7 @@ export function Keyboard({keyboardLetter, setKeyboardLetter}) {
       />
     )
   }
-  // I think each individual letter needs its own component... for changing color
+
   return (
     <div>
       <div className={utilStyles.grid}>
