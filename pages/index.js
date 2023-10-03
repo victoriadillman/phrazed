@@ -18,6 +18,7 @@ export default function Home() {
     const data = {
       phrase: event.target.phrase.value
     };
+    console.log(data)
     const JSONdata = JSON.stringify(data);
     const endpoint = '/api/generate-link';
 
