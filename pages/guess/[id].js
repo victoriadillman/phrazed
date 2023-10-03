@@ -13,7 +13,7 @@ export default function Game() {
   const [isEnabled, setEnable] = useState([])
   const mainRef = useRef([]);
   // Working on this - idea is changing the keyboard letter to only one val at a time and that will update and use textbox logic
-  const [keyboardLetter, setKeyboardLetter] = useState(Array(26).fill('white'));
+  const [keyboardLetter, setKeyboardLetter] = useState(null);
   const [objLetters, setObjLetters] = useState({});
   const [objColors, setObjColors] = useState({});
 
@@ -77,6 +77,16 @@ export default function Game() {
       })
   }, [router.query.id]);
 
+  // Initial loading of keyboard logic
+  useEffect(() => {
+    const alphabet = 'qwertyuiopasdfghjklzxcvbnm'
+    const newKeyboard = {};
+    for (let i = 0; i < alphabet.length; i++) {
+      newKeyboard[alphabet[i]] = 'white';
+    }
+    setKeyboardLetter(newKeyboard);
+  }, [])
+
   if (isLoading) return <p>Loading...</p>;
     
   // Rendering phrase component
@@ -107,10 +117,11 @@ export default function Game() {
       {/* <p>The phrase is: {phrase}</p> */}
       {guessElements}
       <br></br>
+      {keyboardLetter === null ? <div/> : 
       <Keyboard 
         keyboardLetter={keyboardLetter}
-        setKeyboardLetter={setKeyboardLetter}
-      />
+      />}
+      
     </Layout>
   );
 }

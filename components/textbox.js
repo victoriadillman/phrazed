@@ -56,8 +56,7 @@ export const Textbox = forwardRef(function Textbox(
         setObjColors(repeatObjColor);
 
         // Logic for keyboard colors
-        const newKeyboardLetter = [];
-        // for ()
+        
 
         // Logic for yes vs no
         if (!checkResult[1]) {

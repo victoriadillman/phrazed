@@ -1,35 +1,39 @@
 import { KeyboardTextbox } from "./keyboardTextbox";
 import utilStyles from '../styles/utils.module.css';
 
-export function Keyboard({keyboardLetter, setKeyboardLetter}) {
-  const alphabet = 'qwertyuiopasdfghjklzxcvbnm';
+export function Keyboard({keyboardLetter}) {
+
   const row1 = [];
+  const row2 = [];
+  const row3 = [];
+  const alphabet = 'qwertyuiopasdfghjklzxcvbnm';
+  
   for (let i = 0; i < 10; i++) {
     row1.push(
       <KeyboardTextbox
       letter={alphabet[i]}
-      style={utilStyles[keyboardLetter[i]]}
+      style={utilStyles[keyboardLetter[alphabet[i]]]}
       />
     )
-  }
-  const row2 = [];
+  };
+  
   for (let i = 10; i < 19; i++) {
     row2.push(
       <KeyboardTextbox
       letter={alphabet[i]}
-      style={utilStyles[keyboardLetter[i]]}
+      style={utilStyles[keyboardLetter[alphabet[i]]]}
       />
     )
-  }
-  const row3 = [];
+  };
+  
   for (let i = 19; i < 26; i++) {
     row3.push(
       <KeyboardTextbox
       letter={alphabet[i]}
-      style={utilStyles[keyboardLetter[i]]}
+      style={utilStyles[keyboardLetter[alphabet[i]]]}
       />
     )
-  }
+  };
 
   return (
     <div>
