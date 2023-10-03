@@ -12,8 +12,8 @@ export default function Home() {
   const [isURL, setURL] = useState('');
   const ref = useRef(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event, fromForm = true) => {
+    if (fromForm) event.preventDefault();
 
     const data = {
       phrase: event.target.phrase.value

@@ -7,6 +7,8 @@ export function Random({handleSubmit}) {
     const response = await fetch(endpoint);
     const result = await response.json();
     setRandomPhrase(result);
+    const event = {'target': {'phrase': {'value': {result}}}}
+    handleSubmit(event, false);
     return;
   }
   
