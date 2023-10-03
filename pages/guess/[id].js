@@ -13,7 +13,7 @@ export default function Game() {
   const [isEnabled, setEnable] = useState([])
   const mainRef = useRef([]);
   // Working on this - idea is changing the keyboard letter to only one val at a time and that will update and use textbox logic
-  const [keyboardLetter, setKeyboardLetter] = useState(null);
+  const [keyboardLetter, setKeyboardLetter] = useState(Array(26).fill('white'));
   const [objLetters, setObjLetters] = useState({});
   const [objColors, setObjColors] = useState({});
 
@@ -51,7 +51,7 @@ export default function Game() {
   }, [isEnabled])
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     
     if (!router.query.id) {
       setLoading(false);
