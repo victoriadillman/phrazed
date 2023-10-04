@@ -13,8 +13,11 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
       const letterArr = [];
       const colorArr = [];
       for (let i = 0; i < phrase.length; i++) {
-        const noAlphabet = new RegExp(/[^a-zA-Z]/)
-        if (phrase[i] === ' ' || noAlphabet.test(phrase[i])) {
+        const noAlphabet = new RegExp(/[^a-zA-Z]/);
+        if (phrase[i] === "'") {
+          letterArr.push("punc");
+        }
+        else if (phrase[i] === ' ' || noAlphabet.test(phrase[i])) {
           letterArr.push('')
         }
         else {
