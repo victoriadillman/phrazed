@@ -6,11 +6,12 @@ export function Keyboard({keyboardLetter}) {
   const row1 = [];
   const row2 = [];
   const row3 = [];
-  const alphabet = 'qwertyuiopasdfghjklzxcvbnm';
+  const alphabet = 'QWERTYUIOPASDFGHJKLZXCVBNM';
   
   for (let i = 0; i < 10; i++) {
     row1.push(
       <KeyboardTextbox
+      key={i + 'keyboard'}
       letter={alphabet[i]}
       style={utilStyles[keyboardLetter[alphabet[i]]]}
       />
@@ -20,6 +21,7 @@ export function Keyboard({keyboardLetter}) {
   for (let i = 10; i < 19; i++) {
     row2.push(
       <KeyboardTextbox
+      key={i + 'keyboard'}
       letter={alphabet[i]}
       style={utilStyles[keyboardLetter[alphabet[i]]]}
       />
@@ -29,6 +31,7 @@ export function Keyboard({keyboardLetter}) {
   for (let i = 19; i < 26; i++) {
     row3.push(
       <KeyboardTextbox
+      key={i + 'keyboard'}
       letter={alphabet[i]}
       style={utilStyles[keyboardLetter[alphabet[i]]]}
       />

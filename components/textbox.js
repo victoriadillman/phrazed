@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox(
-  { phrase, space, backspace, index, objLetters, setObjLetters, objColors, setObjColors, testStyle, setEnable, isEnabled, guessPoint, handleMainFocus, focusing }, 
+  { phrase, space, backspace, index, objLetters, setObjLetters, objColors, setObjColors, testStyle, setEnable, isEnabled, guessPoint, handleMainFocus, focusing, keyboardLetter, setKeyboardLetter }, 
   ref) {
 
   const handleInputChange = (e) => {
@@ -56,7 +56,20 @@ export const Textbox = forwardRef(function Textbox(
         setObjColors(repeatObjColor);
 
         // Logic for keyboard colors
-        
+        const newKeyboardLetter = {};
+        // Updating the new letters
+        objLetters[guessPoint].forEach((curElem, i) => {
+          newKeyboardLetter[curElem] = checkResult[0][i]
+        });
+        // filling in the remaining letter colors
+        for (const key in keyboardLetter) {
+          if (key in newKeyboardLetter) {
+            continue;
+          } else {
+            newKeyboardLetter[key] = keyboardLetter[key]
+          }
+        };
+        setKeyboardLetter(newKeyboardLetter);
 
         // Logic for yes vs no
         if (!checkResult[1]) {

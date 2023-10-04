@@ -79,7 +79,7 @@ export default function Game() {
 
   // Initial loading of keyboard logic
   useEffect(() => {
-    const alphabet = 'qwertyuiopasdfghjklzxcvbnm'
+    const alphabet = 'QWERTYUIOPASDFGHJKLZXCVBNM'
     const newKeyboard = {};
     for (let i = 0; i < alphabet.length; i++) {
       newKeyboard[alphabet[i]] = 'white';
@@ -104,10 +104,12 @@ export default function Game() {
         isEnabled={isEnabled}
         setEnable={setEnable}
         keyboardLetter={keyboardLetter}
+        setKeyboardLetter={setKeyboardLetter}
         objLetters={objLetters}
         setObjLetters={setObjLetters}
         objColors={objColors}
         setObjColors={setObjColors}
+
       />
     );
   }
