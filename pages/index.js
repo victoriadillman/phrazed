@@ -18,7 +18,6 @@ export default function Home() {
     const data = {
       phrase: event.target.phrase.value
     };
-    console.log(data)
     const JSONdata = JSON.stringify(data);
     const endpoint = '/api/generate-link';
 
@@ -46,16 +45,18 @@ export default function Home() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <h1>Welcome to Phrazed</h1>
+      <section className={utilStyles.container}>
+        <h1 className={utilStyles.headingMd}>Welcome to Phrazed</h1>
         <br/>
-        <p>How does it work? <Link href='/about/how-it-works'>Click here for details</Link></p>
+        <br></br>
+        <p>How does it work? <Link className={utilStyles.bold} href='/about/how-it-works'>Click here for details</Link></p>
         <br/>
+        <br></br>
         <Entry 
         ref={(el) => (ref.current = el)} 
         handleSubmit={handleSubmit}/>
-        <Random 
-        handleSubmit={handleSubmit}/>
+        {/* <Random 
+        handleSubmit={handleSubmit}/> */}
         <br></br>
         <div>
           {isGenerated && <URL isURL={isURL}/>}

@@ -13,8 +13,6 @@ export const Entry = forwardRef(function Entry({handleSubmit}, ref) {
           maxLength="50"
           ref={ref}
         />
-        <br/>
-        <br/>
         <button type="submit">Generate link</button>
       </form>
   )

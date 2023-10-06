@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import { IndividualGuess } from '../../components/individualGuess';
 import { Keyboard } from '../../components/keyboard';
-
+import utilStyles from '../../styles/utils.module.css'
 // Wrap the functional component with React.forwardRef
 
 export default function Game() {
@@ -119,6 +119,10 @@ export default function Game() {
   return (
     <Layout>
       {/* <p>The phrase is: {phrase}</p> */}
+      <div className={utilStyles.container}>
+        <h1 className={utilStyles.heading2XL}> Phrazed</h1>
+      </div>
+      <br/>
       <div className={classSuccess}>
         {guessElements}
         <br></br>
