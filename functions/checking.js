@@ -19,7 +19,6 @@ export function check(str, arr) {
       result.push('gray');
       success = false;
     }
-    // Getting error: edge case is 'wouldn't harm a fly' and entry is 'qqrewqasfdaagda'
     else if (arrWords[wordCount].includes(arr[i])) {
       result.push('yellow');
       success = false;

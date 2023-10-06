@@ -4,7 +4,7 @@ import utilStyles from '../styles/utils.module.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, isEnabled, setEnable, keyboardLetter, setKeyboardLetter, objLetters, setObjLetters, objColors, setObjColors}){
+export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, isEnabled, setEnable, keyboardLetter, setKeyboardLetter, objLetters, setObjLetters, objColors, setObjColors, setClassSuccess}){
   const regex = new RegExp(/^[^a-zA-Z]*$/);
   const [resultRows, setResultRows] = useState([])
     
@@ -72,6 +72,7 @@ export function IndividualGuess({phrase, guessPoint, mainRef, handleMainFocus, i
               focusing={(rows.length === 0) ? true : false}
               keyboardLetter={keyboardLetter}
               setKeyboardLetter={setKeyboardLetter}
+              setClassSuccess={setClassSuccess}
             />
           )
         } 

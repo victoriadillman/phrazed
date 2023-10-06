@@ -52,10 +52,25 @@ button {
   }
 }
 
+@keyframes tilt-n-move-shaking {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(2px, 2px) rotate(2deg); }
+  50% { transform: translate(0, 0) rotate(0eg); }
+  75% { transform: translate(-2px, 2px) rotate(-2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
 input:invalid {
   animation: shake 0.2s ease-in-out 0s 2;
   box-shadow: 0 0 0.6rem #535050;
 }
 input:disabled {
   color: black;
+}
+
+.success {
+  animation: tilt-n-move-shaking .2s infinite;
+}
+.fail {
+  animation: shake 0.2s ease-in-out 0s 2;
 }

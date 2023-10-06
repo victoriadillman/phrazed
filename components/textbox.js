@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { check } from '../functions/checking';
 
 export const Textbox = forwardRef(function Textbox(
-  { phrase, space, backspace, index, objLetters, setObjLetters, objColors, setObjColors, testStyle, setEnable, isEnabled, guessPoint, handleMainFocus, focusing, keyboardLetter, setKeyboardLetter }, 
+  { phrase, space, backspace, index, objLetters, setObjLetters, objColors, setObjColors, testStyle, setEnable, isEnabled, guessPoint, handleMainFocus, focusing, keyboardLetter, setKeyboardLetter, setClassSuccess }, 
   ref) {
 
   const handleInputChange = (e) => {
@@ -73,18 +73,28 @@ export const Textbox = forwardRef(function Textbox(
 
         // Logic for yes vs no
         if (!checkResult[1]) {
-          alert('nope')
+          if (guessPoint === 5) {
+            alert(`Nope, the phrase was ${phrase}`);
+            setClassSuccess('fail')
+          }
+          else alert('nope');
+          // Enable move
+          setEnable(isEnabled => {
+            const newEnable = [...isEnabled];
+            newEnable[guessPoint] = false;
+            newEnable[guessPoint + 1] = true;
+            return newEnable;
+          });
         }
         else {
-          alert('yeah boi')
+          // Disable all moves
+          setEnable(isEnabled => {
+            const newEnable = [...isEnabled];
+            newEnable[guessPoint] = false;
+            return newEnable;
+          });
+          setClassSuccess('success')
         }
-        // Enable move
-        setEnable(isEnabled => {
-          const newEnable = [...isEnabled];
-          newEnable[guessPoint] = false;
-          newEnable[guessPoint + 1] = true;
-          return newEnable;
-        });
       }    
     }
   };

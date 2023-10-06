@@ -16,6 +16,8 @@ export default function Game() {
   const [keyboardLetter, setKeyboardLetter] = useState(null);
   const [objLetters, setObjLetters] = useState({});
   const [objColors, setObjColors] = useState({});
+  // Success variable
+  const [classSuccess, setClassSuccess] = useState('')
 
   // Pulling up the next input focus on entry, called through the textbox component
   const handleMainFocus = (nextIndex, backspace) => {
@@ -109,7 +111,7 @@ export default function Game() {
         setObjLetters={setObjLetters}
         objColors={objColors}
         setObjColors={setObjColors}
-
+        setClassSuccess={setClassSuccess}
       />
     );
   }
@@ -117,13 +119,14 @@ export default function Game() {
   return (
     <Layout>
       {/* <p>The phrase is: {phrase}</p> */}
-      {guessElements}
-      <br></br>
-      {keyboardLetter === null ? <div/> : 
-      <Keyboard 
-        keyboardLetter={keyboardLetter}
-      />}
-      
+      <div className={classSuccess}>
+        {guessElements}
+        <br></br>
+        {keyboardLetter === null ? <div/> : 
+        <Keyboard 
+          keyboardLetter={keyboardLetter}
+        />}
+      </div>
     </Layout>
   );
 }
