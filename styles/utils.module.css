@@ -82,47 +82,52 @@
   border: solid black 1px;
   text-align: center;
   display: block;
-  background-color:white;
+  background-color:rgb(255, 255, 255);
+  border-radius: 2px;
 }
 
 .gray {
   width: 2.5em;
   height: 2.5em;
   margin: .15em;
-  border: solid gray 1px;
+  border: solid rgb(148, 147, 147) 1px;
   text-align: center;
   display: block;
-  background-color: gray;
+  background-color: rgb(170, 167, 167);
+  border-radius: 2px;
 }
 
 .green {
   width: 2.5em;
   height: 2.5em;
   margin: .15em;
-  border: solid green 1px;
+  border: solid rgb(110, 182, 110) 1px;
   text-align: center;
   display: block;
-  background-color: green;
+  background-color: rgb(127, 210, 127);
+  border-radius: 2px;
 }
 
 .yellow {
   width: 2.5em;
   height: 2.5em;
   margin: .15em;
-  border: solid yellow 1px;
+  border: solid rgb(192, 192, 84) 1px;
   text-align: center;
   display: block;
-  background-color: yellow;
+  background-color: rgb(225, 225, 99);
+  border-radius: 2px;
 }
 
 .purple {
   width: 2.5em;
   height: 2.5em;
   margin: .15em;
-  border: solid purple 1px;
+  border: solid rgb(166, 90, 166) 1px;
   text-align: center;
   display: block;
-  background-color: purple;
+  background-color: rgb(189, 104, 189);
+  border-radius: 2px;
 }
 
 .container {
@@ -138,8 +143,10 @@
 }
 
 .modal {
-  background-color: rgb(195, 147, 219);
-  outline: rgb(97, 17, 128) solid 2px;
+  background-color: rgb(233, 207, 246);
+  outline: rgb(187, 129, 210) solid 2px;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .keyText {

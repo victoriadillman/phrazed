@@ -2,9 +2,13 @@ import Popup from 'reactjs-popup';
 import { useState, useEffect } from 'react';
 import utilStyles from '../styles/utils.module.css'
 
-export function Modal({}) {
+export function Modal({handleMainFocus}) {
   const [open, setOpen] = useState(false);
-  const closeModal = () => setOpen(false);
+  // Find a way to call focus to first input
+  const closeModal = () => {
+    setOpen(false);
+    handleMainFocus(0, false)
+  }
 
   useEffect(() => {
     setOpen(true);

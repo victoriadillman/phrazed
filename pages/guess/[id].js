@@ -131,7 +131,8 @@ export default function Game() {
           keyboardLetter={keyboardLetter}
         />}
       </div>
-      <Modal/>
+      <Modal
+      handleMainFocus={handleMainFocus}/>
     </Layout>
   );
 }
