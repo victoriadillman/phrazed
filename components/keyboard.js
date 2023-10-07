@@ -14,6 +14,7 @@ export function Keyboard({keyboardLetter}) {
       key={i + 'keyboard'}
       letter={alphabet[i]}
       style={utilStyles[keyboardLetter[alphabet[i]]]}
+      textStyle={utilStyles.keyText}
       />
     )
   };
@@ -24,6 +25,7 @@ export function Keyboard({keyboardLetter}) {
       key={i + 'keyboard'}
       letter={alphabet[i]}
       style={utilStyles[keyboardLetter[alphabet[i]]]}
+      textStyle={utilStyles.keyText}
       />
     )
   };
@@ -34,6 +36,7 @@ export function Keyboard({keyboardLetter}) {
       key={i + 'keyboard'}
       letter={alphabet[i]}
       style={utilStyles[keyboardLetter[alphabet[i]]]}
+      textStyle={utilStyles.keyText}
       />
     )
   };

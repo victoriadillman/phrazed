@@ -136,3 +136,13 @@
 .bold {
   font-weight: 600;
 }
+
+.modal {
+  background-color: rgb(195, 147, 219);
+  outline: rgb(97, 17, 128) solid 2px;
+}
+
+.keyText {
+  text-align: center;
+  line-height: 2.25rem
+}

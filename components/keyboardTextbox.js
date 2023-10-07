@@ -1,7 +1,7 @@
-export function KeyboardTextbox({letter, style}){
+export function KeyboardTextbox({letter, style, textStyle}){
   return (
     <div className={style}>
-      <p>{letter}</p>
+      <p className={textStyle}>{letter}</p>
     </div>
   )
 }
