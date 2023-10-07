@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { IndividualGuess } from '../../components/individualGuess';
 import { Keyboard } from '../../components/keyboard';
 import utilStyles from '../../styles/utils.module.css'
-// Wrap the functional component with React.forwardRef
+import { Modal } from '../../components/modal';
 
 export default function Game() {
   const router = useRouter();
@@ -131,6 +131,7 @@ export default function Game() {
           keyboardLetter={keyboardLetter}
         />}
       </div>
+      <Modal/>
     </Layout>
   );
 }
