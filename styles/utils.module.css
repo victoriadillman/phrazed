@@ -140,6 +140,7 @@
 }
 .bold {
   font-weight: 600;
+  font-style: italic;
 }
 
 .modal {
