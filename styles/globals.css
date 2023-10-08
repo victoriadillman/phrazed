@@ -1,9 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+  font-family: 'Playfair Display', serif;
+  background-color:#14C2CC;
+  background-image: 
+    radial-gradient(circle farthest-side at top right, transparent, #f8f9df), radial-gradient(ellipse farthest-corner at 0% 100%, transparent, #cde1f9);
+    animation:bg-change 10s infinite;
+}
+
+@keyframes bg-change {
+0%, 100% {
+  filter:hue-rotate(0deg);
+}
+50% {
+  filter:hue-rotate(-45deg);
+}
 }
 
 a {

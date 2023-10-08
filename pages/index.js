@@ -4,7 +4,7 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import { URL } from '../components/URL';
 import { Entry } from '../components/entry';
-import { Random } from '../components/random';
+// import { Random } from '../components/random';
 import { useState, useRef, useEffect } from 'react';
 
 export default function Home() {
