@@ -13,6 +13,7 @@ export const Entry = forwardRef(function Entry({handleSubmit}, ref) {
           minLength='2'
           maxLength="50"
           ref={ref}
+          className={utilStyle.formInput}
         />
         <button className={utilStyle.buttonGenerate} type="submit"><p className={utilStyle.buttonText}>Generate link</p></button>
       </form>
