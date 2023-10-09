@@ -59,7 +59,7 @@ export default function Home() {
         handleSubmit={handleSubmit}/> */}
         <br></br>
         <div>
-          {isGenerated && <URL isURL={isURL}/>}
+          {isGenerated && <URL isURL={isURL} style={utilStyles.buttonText}/>}
         </div>
       </section>
     </Layout>

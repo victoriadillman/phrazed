@@ -48,9 +48,16 @@ ul {
 }
 
 button {
-  padding: 0.5rem 1rem;
+  height: 2.2rem;
   margin: 1rem;
-  background-color: #f8f9df;
+  background-color: transparent;
+  z-index: 0;
+  transition: all .3s ease;
+  border-radius: 20px;
+  border: 2px solid rgb(62, 62, 63)
+}
+button:hover {
+  cursor: pointer;
 }
 
 @keyframes shake {

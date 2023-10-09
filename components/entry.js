@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-
+import utilStyle from '../styles/utils.module.css'
 
 export const Entry = forwardRef(function Entry({handleSubmit}, ref) {
   return (
@@ -14,7 +14,7 @@ export const Entry = forwardRef(function Entry({handleSubmit}, ref) {
           maxLength="50"
           ref={ref}
         />
-        <button type="submit">Generate link</button>
+        <button className={utilStyle.buttonGenerate} type="submit"><p className={utilStyle.buttonText}>Generate link</p></button>
       </form>
   )
 })

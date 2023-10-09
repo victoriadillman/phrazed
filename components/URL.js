@@ -1,4 +1,5 @@
-export function URL({isURL}) {
+
+export function URL({isURL, style}) {
   const copyContent = async () => {
     try {
       await navigator.clipboard.writeText(isURL);
@@ -10,8 +11,8 @@ export function URL({isURL}) {
   
   return (
     <div>
-      <p>Here is the link to send your friend:</p>
-      <button className="btn" onClick={copyContent}>${isURL}</button>
+      <p>Click the URL to copy the link and send it to your friend:</p>
+      <button onClick={copyContent}><p className={style} >${isURL}</p></button>
     </div>
   )
 }

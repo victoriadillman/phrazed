@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
 export const siteTitle = 'Phrazed';
@@ -18,7 +17,7 @@ export default function Layout({ children, home }) {
     <main>{children}</main>
     {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">← Make your own phrase</Link>
+          <Link href="/">← Send your own phrase</Link>
         </div>
       )}
   </div>
