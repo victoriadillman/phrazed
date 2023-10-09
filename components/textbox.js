@@ -75,7 +75,7 @@ export const Textbox = forwardRef(function Textbox(
         if (!checkResult[1]) {
           if (guessPoint === 5) {
             alert(`Nope, the phrase was ${phrase}`);
-            setClassSuccess('fail')
+            setClassSuccess('fail');
           }
           else alert('nope');
           // Enable move
@@ -93,7 +93,8 @@ export const Textbox = forwardRef(function Textbox(
             newEnable[guessPoint] = false;
             return newEnable;
           });
-          setClassSuccess('success')
+          setClassSuccess('success');
+          alert('Good job! You guessed it!');
         }
       }    
     }
