@@ -8,5 +8,5 @@ export default function handler(req, res) {
     return encodeURIComponent(encryptedText)
   }
   const result = encrypt(phrase);
-  res.status(200).json({urlAdd: `http://https://phrazed.app/${result}`})
+  res.status(200).json({urlAdd: `https://phrazed.app/${result}`})
 }
