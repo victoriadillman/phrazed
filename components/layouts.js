@@ -13,6 +13,7 @@ export default function Layout({ children, home }) {
       content="Send phrases to friends for them to guess"
       />
       <meta name="og:title" content={siteTitle} />
+      <link rel="shortcut icon" href="/image/favicon.ico" />
     </Head>
     <main>{children}</main>
     {!home && (
