@@ -9,7 +9,7 @@ body {
   background-color:#e6f3f4;
   background-image: 
     radial-gradient(circle farthest-side at top right, transparent, #f8f9df), radial-gradient(ellipse farthest-corner at 0% 100%, transparent, #cde1f9);
-    animation:bg-change 10s infinite;
+    /* animation:bg-change 10s infinite; */
 }
 
 /* @keyframes bg-change {

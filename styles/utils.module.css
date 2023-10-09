@@ -152,6 +152,7 @@
   outline: rgb(187, 129, 210) solid 2px;
   padding: 1rem;
   border-radius: 10px;
+  margin: 1rem;
 }
 
 .keyText {
