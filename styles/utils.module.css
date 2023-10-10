@@ -59,6 +59,14 @@
   margin-top: 0rem;
 }
 
+.keyboardGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: 0rem;
+}
+
 .box {
   max-width: 50px;
   max-height: 50px;
@@ -148,8 +156,8 @@
 }
 
 .modal {
-  background-color: rgb(233, 207, 246);
-  outline: rgb(187, 129, 210) solid 2px;
+  background-color: rgb(243, 223, 252);
+  outline: rgb(191, 147, 208) solid 2px;
   padding: 1rem;
   border-radius: 10px;
   margin: 1rem;
@@ -160,7 +168,7 @@
 
 .keyText {
   text-align: center;
-  line-height: 2.25rem
+  line-height: 2.25rem;
 }
 
 /* Button styling */

@@ -43,13 +43,13 @@ export function Keyboard({keyboardLetter}) {
 
   return (
     <div>
-      <div className={utilStyles.grid}>
+      <div className={utilStyles.keyboardGrid}>
         {row1}
       </div>
-      <div className={utilStyles.grid}>
+      <div className={utilStyles.keyboardGrid}>
         {row2}
       </div>
-      <div className={utilStyles.grid}>
+      <div className={utilStyles.keyboardGrid}>
         {row3}
       </div>
     </div>
