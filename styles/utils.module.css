@@ -154,6 +154,9 @@
   border-radius: 10px;
   margin: 1rem;
 }
+.modalText{
+  margin: 1rem;
+}
 
 .keyText {
   text-align: center;
