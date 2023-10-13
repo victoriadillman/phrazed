@@ -1,15 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 html,
 body {
   padding: 0;
   margin: 0;
   height: 100%;
-  font-family: 'Playfair Display', serif;
+  font-family: 'VT323', monospace;
   background-color:#e6f3f4;
   background-image: 
-    radial-gradient(circle farthest-side at top right, transparent, #f8f9df), radial-gradient(ellipse farthest-corner at 0% 100%, transparent, #cde1f9);
+    url('../public/image/background.gif')
     /* animation:bg-change 10s infinite; */
+}
+form {
+  margin: 1rem;
 }
 
 /* @keyframes bg-change {

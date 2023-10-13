@@ -119,7 +119,7 @@ export default function Game() {
   return (
     <Layout>
       {/* <p>The phrase is: {phrase}</p> */}
-      <div className={utilStyles.container}>
+      <div className={utilStyles.containerGuess}>
         <h1 className={utilStyles.heading2XL}> Phrazed</h1>
       </div>
       <br/>
