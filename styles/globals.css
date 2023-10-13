@@ -8,7 +8,7 @@ body {
   font-family: 'VT323', monospace;
   background-color:#e6f3f4;
   background-image: 
-    url('../public/image/background.gif')
+    url('/image/background.gif')
     /* animation:bg-change 10s infinite; */
 }
 form {
