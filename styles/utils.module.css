@@ -164,7 +164,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(158, 205, 247, 0.75);
+  background-image: linear-gradient(rgb(158, 205, 247, 1),rgb(158, 205, 247, .2));
 }
 
 .bold {
