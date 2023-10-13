@@ -19,6 +19,7 @@ export function check(str, arr) {
       result.push('gray');
       success = false;
     }
+    // Add in logic for if in both word and elsewhere in phrase 
     else if (arrWords[wordCount].includes(arr[i])) {
       result.push('yellow');
       success = false;

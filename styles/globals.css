@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 html,
 body {
   padding: 0;
   margin: 0;
   height: 100%;
-  font-family: 'Playfair Display', serif;
+  font-family: 'VT323', monospace;
   background-color:#e6f3f4;
   background-image: 
     url('../public/image/background.gif')
