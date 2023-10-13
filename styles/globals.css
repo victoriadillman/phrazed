@@ -11,6 +11,9 @@ body {
     url('../public/image/background.gif')
     /* animation:bg-change 10s infinite; */
 }
+form {
+  margin: 1rem;
+}
 
 /* @keyframes bg-change {
 0%, 100% {

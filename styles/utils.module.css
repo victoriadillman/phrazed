@@ -136,7 +136,7 @@
   border: solid rgb(166, 90, 166) 1px;
   text-align: center;
   display: block;
-  background-color: rgb(189, 104, 189);
+  background-color: rgb(189, 104, 189) ;
   border-radius: 2px;
 }
 
@@ -147,6 +147,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(158, 205, 247, 0.75);
+  border:none;
+   -moz-box-shadow:0 0 3px rgb(158, 205, 247);
+   -webkit-box-shadow:0 0 3px rgb(158, 205, 247);
+   box-shadow:0 0 3px rgb(158, 205, 247);
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* opacity: 50%; */
 }
 .bold {
   font-weight: 600;
