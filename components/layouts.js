@@ -15,7 +15,9 @@ export default function Layout({ children, home }) {
       <meta name="og:title" content={siteTitle} />
       <link rel="shortcut icon" href="/image/favicon.ico" />
     </Head>
-    <main>{children}</main>
+    <main>
+      {children}
+    </main>
     {!home && (
         <div className={styles.backToHome}>
           <Link href="/">← Send your own phrase</Link>
